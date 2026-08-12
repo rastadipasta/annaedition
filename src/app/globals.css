@@ -211,18 +211,20 @@ main { padding-top: 96px; }
 .hero { min-height: calc(100svh - 110px); display: grid; align-items: center; padding-block: clamp(3rem, 7vw, 6rem); }
 .hero-grid { display: grid; grid-template-columns: .86fr 1.14fr; align-items: center; gap: clamp(3rem, 7vw, 7rem); }
 .hero-copy { padding-left: clamp(0rem, 2vw, 2rem); }
-.hero-title { margin: 2.3rem 0 1.8rem; font-size: clamp(4rem, 7.2vw, 7rem); }
+.hero-title { margin: 2.3rem 0 1.8rem; font-size: clamp(4rem, 7.2vw, 7rem); line-height: 1.12; }
 .typewriter-line { display: inline-block; }
 .motion-enabled .typewriter-line {
-  clip-path: inset(0 100% 0 0);
   will-change: clip-path;
-  animation: typewriter-line 320ms steps(10, end) both;
+  animation: typewriter-line 320ms steps(10, end) backwards;
 }
 .motion-enabled .typewriter-line-1 { animation-delay: 450ms; }
 .motion-enabled .typewriter-line-2 { animation-duration: 230ms; animation-delay: 770ms; animation-timing-function: steps(7, end); }
 .motion-enabled .typewriter-line-3 { animation-duration: 270ms; animation-delay: 1s; animation-timing-function: steps(8, end); }
 .motion-enabled .typewriter-line-4 { animation-delay: 1.27s; }
-@keyframes typewriter-line { to { clip-path: inset(0 0 0 0); } }
+@keyframes typewriter-line {
+  from { clip-path: inset(-.12em calc(100% + .12em) -.22em -.08em); }
+  to { clip-path: inset(-.12em -.12em -.22em -.08em); }
+}
 .hero-media { position: relative; aspect-ratio: .96; border: 1px solid var(--line); border-radius: 56px 56px 56px 12px; overflow: hidden; box-shadow: var(--shadow); }
 .hero-media img { object-fit: cover; }
 .hero-actions { display: flex; gap: 2rem; margin-top: 2rem; }
@@ -386,7 +388,7 @@ main { padding-top: 96px; }
   .hero { min-height: auto; }
   .hero-grid, .philosophy-grid, .project-feature, .callout-grid, .about-grid, .contact-intro { grid-template-columns: 1fr; }
   .hero-copy { padding: 0; }
-  .hero-title { font-size: clamp(3.8rem, 17vw, 5.6rem); }
+  .hero-title { font-size: clamp(3.8rem, 17vw, 5.6rem); line-height: 1.16; }
   .page-hero h1 { max-width: 100%; font-size: clamp(3rem, 12vw, 4rem); overflow-wrap: break-word; hyphens: auto; }
   .hero-media { aspect-ratio: 4 / 5; border-radius: 40px 40px 40px 10px; }
   .hero-actions { flex-wrap: wrap; }
@@ -427,7 +429,7 @@ main { padding-top: 96px; }
   .theme-toggle, .menu-toggle { width: 40px; height: 40px; }
   .brand-script::before, .brand-script::after { display: none; }
   .brand-script { justify-content: center; }
-  .hero-title { font-size: 3.65rem; }
+  .hero-title { font-size: 3.65rem; line-height: 1.16; }
   .page-hero h1 { font-size: 3rem; }
   .hero-actions { gap: 1rem; }
   .choice-grid { grid-template-columns: 1fr; }
