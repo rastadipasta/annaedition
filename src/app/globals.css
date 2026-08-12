@@ -286,7 +286,9 @@ main { padding-top: 96px; }
 .project-card:nth-child(3n + 2) { grid-column: span 5; padding-top: 6rem; }
 .project-card .image-frame { aspect-ratio: 4 / 3; }
 .project-meta { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem .25rem .6rem; color: var(--muted); font-size: .75rem; letter-spacing: .11em; text-transform: uppercase; }
-.project-card h2 { margin: .3rem 0; font-size: clamp(2.2rem, 3.8vw, 4rem); }
+.project-card h2 { width: fit-content; max-width: 100%; display: flex; align-items: baseline; gap: .5rem; margin: .3rem 0; font-size: clamp(2.2rem, 3.8vw, 4rem); }
+.project-card h2 span { min-width: 0; }
+.project-card h2 svg { flex: 0 0 auto; }
 
 .project-detail-hero { padding-top: 3rem; }
 .project-detail-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 2rem; }

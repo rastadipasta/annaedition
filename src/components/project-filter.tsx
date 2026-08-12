@@ -33,7 +33,7 @@ export function ProjectFilter({ projects }: { projects: Project[] }) {
                 <Image src={project.cover} alt={`${project.title} – ${project.category}`} fill loading={index < 2 ? "eager" : "lazy"} sizes="(max-width: 800px) 100vw, 55vw" />
               </div>
               <div className="project-meta"><span>{project.location}, {project.year}</span><span>{project.category}</span></div>
-              <h2 className="display">{project.title} <ArrowUpRight size={24} aria-hidden="true" /></h2>
+              <h2 className="display"><span>{project.title}</span><ArrowUpRight size={24} aria-hidden="true" /></h2>
               <p className="lede">{project.excerpt}</p>
             </Link>
           </article>
