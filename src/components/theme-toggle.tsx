@@ -23,14 +23,24 @@ export function ThemeToggle() {
 
   function toggleTheme() {
     const next = theme === "light" ? "dark" : "light";
-    document.documentElement.dataset.theme = next;
-    updateBrowserThemeColor(next);
-    setTheme(next);
+    const applyTheme = () => {
+      document.documentElement.dataset.theme = next;
+      updateBrowserThemeColor(next);
+      setTheme(next);
+    };
+    const transitionDocument = document as Document & { startViewTransition?: (callback: () => void) => unknown };
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && transitionDocument.startViewTransition) {
+      transitionDocument.startViewTransition(applyTheme);
+    } else {
+      applyTheme();
+    }
   }
 
   return (
     <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={theme === "light" ? "Dunkles Farbschema aktivieren" : "Helles Farbschema aktivieren"} aria-pressed={theme === "dark"}>
-      {theme === "light" ? <Sun size={19} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
+      <span className="toggle-icon theme-toggle-icon" key={theme} aria-hidden="true">
+        {theme === "light" ? <Sun size={19} /> : <Moon size={18} />}
+      </span>
     </button>
   );
 }

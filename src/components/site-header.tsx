@@ -41,7 +41,9 @@ export function SiteHeader() {
       <nav className="nav-shell container" aria-label="Hauptnavigation" data-motion="load">
         <div className="nav-group">
           <button className="menu-toggle" type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Menü schließen" : "Menü öffnen"}>
-            {open ? <X size={19} /> : <Menu size={19} />}
+            <span className="toggle-icon" key={open ? "close" : "menu"} aria-hidden="true">
+              {open ? <X size={19} /> : <Menu size={19} />}
+            </span>
           </button>
           {first.map(navLink)}
         </div>
@@ -54,8 +56,8 @@ export function SiteHeader() {
           <ThemeToggle />
         </div>
       </nav>
-      {open ? <button className="mobile-menu-backdrop" type="button" aria-label="Menü schließen" onClick={() => setOpen(false)} /> : null}
-      {open ? <div id="mobile-menu" className="mobile-menu container">{navigation.map(navLink)}</div> : null}
+      <button className="mobile-menu-backdrop" type="button" data-open={open} aria-label="Menü schließen" aria-hidden={!open} tabIndex={-1} onClick={() => setOpen(false)} />
+      <div id="mobile-menu" className="mobile-menu container" data-open={open} aria-hidden={!open} inert={!open}>{navigation.map(navLink)}</div>
     </header>
   );
 }
