@@ -338,6 +338,7 @@ main { padding-top: 96px; }
   width: 100%; min-height: 50px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
   background: transparent; color: var(--ink); outline: none; padding: .5rem .15rem;
 }
+.field select option { background: #ffffff; color: #11100f; }
 .field textarea { min-height: 130px; resize: vertical; border: 1px solid var(--line); border-radius: 12px; padding: .8rem; }
 .field input:focus, .field select:focus, .field textarea:focus { box-shadow: 0 2px 0 var(--wine); }
 .choice-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem; }
