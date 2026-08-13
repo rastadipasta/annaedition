@@ -395,20 +395,13 @@ main { padding-top: 96px; }
 }
 .service-card:nth-child(3n + 2) { --service-card-bg: color-mix(in srgb, #e5dec4 78%, #ffffff); }
 .service-card:nth-child(3n) { --service-card-bg: #f1ebe6; }
-.service-card[data-open="true"] { --service-card-bg: #40191e; min-height: 540px; background: #40191e; color: #ffffff; }
+.service-card[data-featured="true"] { --service-card-bg: #40191e; min-height: 540px; background: #40191e; color: #ffffff; }
 .service-card h3 { margin: 0; }
-.service-card-trigger { width: 100%; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
-.service-card-topline { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; }
-.service-card-toggle { width: 48px; height: 48px; display: grid; place-items: center; flex: 0 0 auto; border: 1px solid currentColor; border-radius: 999px; transition: transform 360ms var(--ease), background-color 280ms ease, color 280ms ease; }
-.service-card-trigger:hover .service-card-toggle, .service-card-trigger:focus-visible .service-card-toggle { transform: rotate(90deg); background: currentColor; }
-.service-card-trigger:hover .service-card-toggle svg, .service-card-trigger:focus-visible .service-card-toggle svg { color: var(--service-card-bg); }
-.service-card[data-open="true"] .service-card-trigger:hover .service-card-toggle svg, .service-card[data-open="true"] .service-card-trigger:focus-visible .service-card-toggle svg { color: #40191e; }
+.service-card-topline { display: flex; align-items: center; gap: 1rem; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; }
 .service-card-title { display: block; max-width: 16ch; margin-top: clamp(1.2rem, 3vw, 2.5rem); font-family: var(--font-manrope), "Segoe UI", sans-serif; font-size: clamp(2.6rem, 5.9vw, 6rem); font-weight: 400; letter-spacing: -.055em; line-height: .98; text-wrap: balance; }
 .service-card-tags { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: clamp(1.5rem, 4vw, 3.5rem); }
 .service-card-tags span { padding: .5rem .9rem; border: 1px solid color-mix(in srgb, currentColor 36%, transparent); border-radius: 999px; font-size: .76rem; line-height: 1; }
-.service-card-panel { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 520ms var(--ease), opacity 320ms ease; }
-.service-card-panel > div { overflow: hidden; }
-.service-card-panel[data-open="true"] { grid-template-rows: 1fr; opacity: 1; }
+.service-card-panel { display: block; }
 .service-card-copy { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: start; padding-top: clamp(2rem, 5vw, 4rem); }
 .service-card-copy svg { margin-top: .35rem; color: var(--gold); }
 .service-card-copy p { max-width: 62ch; margin: 0; font-size: clamp(1.05rem, 1.75vw, 1.5rem); line-height: 1.5; text-wrap: pretty; }
@@ -459,7 +452,7 @@ main { padding-top: 96px; }
 :focus-visible { outline: 2px solid var(--wine); outline-offset: 4px; }
 @media (min-width: 1041px) {
   .service-card { position: sticky; top: var(--service-top); }
-  .service-card[data-open="true"] { min-height: min(620px, calc(100svh - 210px)); }
+  .service-card { min-height: min(620px, calc(100svh - 210px)); }
   .packages-stack { display: block; padding-bottom: 5rem; border: 0; }
   .packages-stack .package {
     position: sticky; min-height: 430px; margin-bottom: 2rem; border: 1px solid var(--line); border-radius: 14px 56px;
@@ -548,9 +541,8 @@ main { padding-top: 96px; }
   .footer { position: relative; bottom: auto; }
   .motion-enabled [data-scroll-parallax] img, .motion-enabled .project-drift { animation: none !important; transform: none !important; }
   .service-card { min-height: 0; padding: 1.35rem; border-radius: 14px 38px; }
-  .service-card[data-open="true"] { min-height: 0; }
+  .service-card[data-featured="true"] { min-height: 0; }
   .service-card-title { max-width: 100%; font-size: clamp(2.25rem, 10vw, 4rem); line-height: 1.02; }
-  .service-card-toggle { width: 42px; height: 42px; }
   .service-card-tags { margin-top: 1.4rem; }
   .service-card-copy { grid-template-columns: 1.8rem minmax(0, 1fr); gap: .65rem; padding-top: 1.8rem; }
   .service-card-copy p { font-size: 1rem; line-height: 1.65; }

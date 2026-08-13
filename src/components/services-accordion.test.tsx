@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { ServicesAccordion } from "@/components/services-accordion";
 
@@ -8,19 +8,13 @@ const testServices = [
 ];
 
 describe("ServicesAccordion", () => {
-  it("keeps one card active and exposes the matching accessible panel", () => {
+  it("renders every service as permanently expanded content", () => {
     render(<ServicesAccordion services={testServices} />);
 
-    const firstTrigger = screen.getByRole("button", { name: /Raumkonzept/ });
-    const secondTrigger = screen.getByRole("button", { name: /Farbkonzept/ });
-
-    expect(firstTrigger).toHaveAttribute("aria-expanded", "true");
-    expect(secondTrigger).toHaveAttribute("aria-expanded", "false");
-
-    fireEvent.click(secondTrigger);
-
-    expect(firstTrigger).toHaveAttribute("aria-expanded", "false");
-    expect(secondTrigger).toHaveAttribute("aria-expanded", "true");
-    expect(screen.getByRole("region", { name: /Farbkonzept/ })).toHaveAttribute("aria-hidden", "false");
+    expect(screen.queryAllByRole("button")).toHaveLength(0);
+    expect(screen.getByRole("heading", { name: "Raumkonzept" })).toBeVisible();
+    expect(screen.getByRole("heading", { name: "Farbkonzept" })).toBeVisible();
+    expect(screen.getByText(testServices[0].text)).toBeVisible();
+    expect(screen.getByText(testServices[1].text)).toBeVisible();
   });
 });
