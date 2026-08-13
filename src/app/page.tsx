@@ -33,7 +33,7 @@ export default async function HomePage() {
               <Link className="button-link" href="/kontakt">Kontakt <ArrowRight size={16} /></Link>
             </div>
           </div>
-          <div className="hero-media" data-motion="load" data-motion-variant="image" data-motion-order="2">
+          <div className="hero-media" data-motion="load" data-motion-variant="image" data-motion-order="2" data-scroll-parallax>
             <Image src={cms?.heroImage?.url || "/images/moodboard.jpg"} alt={cms?.heroImage?.alt || "Material- und Farbkonzept in Bordeaux, Naturstein und dunklem Holz"} fill priority sizes="(max-width: 800px) 100vw, 52vw" />
           </div>
         </div>
@@ -43,11 +43,11 @@ export default async function HomePage() {
         <div className="container philosophy-grid">
           <div className="philosophy-card" data-motion="reveal">
             <p className="eyebrow">{cms?.philosophyEyebrow || "Unsere Philosophie"}</p>
-            <h2 className="display">{cms?.philosophyTitle || "Zeitlose Räume."} <span className="accent">{cms?.philosophyAccent || "Persönlich gestaltet."}</span></h2>
+            <h2 className="display motion-title">{cms?.philosophyTitle || "Zeitlose Räume."} <span className="accent">{cms?.philosophyAccent || "Persönlich gestaltet."}</span></h2>
             <p>{cms?.philosophyText || "Ein Zuhause, das wirklich zu dir passt, entsteht nicht durch Zufall – es basiert auf einem klaren Plan. Jedes Detail wird sorgsam ausgewählt, damit Altes und Neues selbstverständlich zusammenfinden."}</p>
             <Link className="button-link" href="/leistungen">Wie wir zusammenarbeiten <ArrowRight size={16} /></Link>
           </div>
-          <div className="philosophy-media" data-motion="reveal" data-motion-variant="image" data-motion-order="1">
+          <div className="philosophy-media" data-motion="reveal" data-motion-variant="image" data-motion-order="1" data-scroll-parallax>
             <Image src={cms?.philosophyImage?.url || "/images/calm-light-dining.jpg"} alt={cms?.philosophyImage?.alt || "Offener Essbereich mit Naturstein, dunklem Holz und grünen Stühlen"} fill sizes="(max-width: 800px) 100vw, 50vw" />
           </div>
         </div>
@@ -57,10 +57,10 @@ export default async function HomePage() {
         <div className="container">
           <header className="section-heading" data-motion="reveal">
             <p className="eyebrow">{cms?.featuredEyebrow || "Ausgewähltes Projekt"}</p>
-            <h2 className="display">{cms?.featuredTitle || "Ideen, die"} <span className="accent">{cms?.featuredAccent || "Form annehmen."}</span></h2>
+            <h2 className="display motion-title">{cms?.featuredTitle || "Ideen, die"} <span className="accent">{cms?.featuredAccent || "Form annehmen."}</span></h2>
           </header>
           <article className="project-feature">
-            <div className="image-frame" style={{ minHeight: 620 }} data-motion="reveal" data-motion-variant="image">
+            <div className="image-frame" style={{ minHeight: 620 }} data-motion="reveal" data-motion-variant="image" data-scroll-parallax>
               <Image src={featured.cover} alt={`${featured.title} – ${featured.category}`} fill sizes="(max-width: 800px) 100vw, 52vw" />
             </div>
             <div data-motion="reveal" data-motion-order="1">
@@ -77,7 +77,7 @@ export default async function HomePage() {
         <div className="container">
           <header className="section-heading" data-motion="reveal">
             <p className="eyebrow">{cms?.packagesEyebrow || "Design-Pakete"}</p>
-            <h2 className="display">{cms?.packagesTitle || "Planung, die"} <span className="accent">{cms?.packagesAccent || "zu dir passt."}</span></h2>
+            <h2 className="display motion-title">{cms?.packagesTitle || "Planung, die"} <span className="accent">{cms?.packagesAccent || "zu dir passt."}</span></h2>
           </header>
           <div className="packages-grid">
             {packages.map((item, index) => (
@@ -91,11 +91,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section callout">
+      <section className="section callout motion-callout">
         <div className="container callout-grid">
           <div className="callout-copy" data-motion="reveal">
             <p className="eyebrow" style={{ color: "#ae895d" }}>{cms?.calloutEyebrow || "Schnelle Hilfe vom Profi"}</p>
-            <h2 className="display">{cms?.calloutTitle || "Call a"}<br /><span style={{ color: "#ae895d" }}>{cms?.calloutAccent || "Designer."}</span></h2>
+            <h2 className="display motion-title">{cms?.calloutTitle || "Call a"}<br /><span style={{ color: "#ae895d" }}>{cms?.calloutAccent || "Designer."}</span></h2>
             <p className="lede" style={{ color: "#f1e7e3" }}>{cms?.calloutIntro || "Die unkomplizierte 1:1 Online-Beratung für schnelle Klarheit, eine professionelle Zweitmeinung und konkrete Ideen."}</p>
             <p className="display callout-price">{cms?.calloutPrice || "500 € Festpreis · 90 Minuten"}</p>
             <Link className="button-link" style={{ color: "#ae895d" }} href="/kontakt?anfrage=call">Beratung anfragen <ArrowRight size={16} /></Link>
@@ -110,11 +110,11 @@ export default async function HomePage() {
         <div className="container project-feature">
           <div data-motion="reveal">
             <p className="eyebrow">{cms?.aboutEyebrow || "Das Gesicht hinter ANNA ÉDITION"}</p>
-            <h2 className="display" style={{ fontSize: "clamp(3.4rem, 6vw, 6rem)", margin: "1rem 0 2rem" }}>{cms?.aboutTitle || "Ehrlich, authentisch und"} <span className="accent">{cms?.aboutAccent || "sicher geplant."}</span></h2>
+            <h2 className="display motion-title" style={{ fontSize: "clamp(3.4rem, 6vw, 6rem)", margin: "1rem 0 2rem" }}>{cms?.aboutTitle || "Ehrlich, authentisch und"} <span className="accent">{cms?.aboutAccent || "sicher geplant."}</span></h2>
             <p className="lede">{cms?.aboutIntro || "Mit feinem Gespür für Details und einem klaren räumlichen Blick begleite ich dich von der ersten Idee bis zu deinem persönlichen Wunsch-Zuhause."}</p>
             <Link className="button-link" href="/ueber-mich">Mehr über mich <ArrowRight size={16} /></Link>
           </div>
-          <div className="image-frame" style={{ minHeight: 560 }} data-motion="reveal" data-motion-variant="image" data-motion-order="1"><Image src={cms?.aboutImage?.url || "/images/moodboard.jpg"} alt={cms?.aboutImage?.alt || "Materialcollage als Sinnbild für Annas kuratierten Designansatz"} fill sizes="(max-width: 800px) 100vw, 45vw" /></div>
+          <div className="image-frame" style={{ minHeight: 560 }} data-motion="reveal" data-motion-variant="image" data-motion-order="1" data-scroll-parallax><Image src={cms?.aboutImage?.url || "/images/moodboard.jpg"} alt={cms?.aboutImage?.alt || "Materialcollage als Sinnbild für Annas kuratierten Designansatz"} fill sizes="(max-width: 800px) 100vw, 45vw" /></div>
         </div>
       </section>
     </div>

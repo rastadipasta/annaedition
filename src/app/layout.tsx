@@ -29,6 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Script id="anna-theme" strategy="beforeInteractive">{themeScript}</Script>
         <Script id="anna-motion" strategy="beforeInteractive">{motionScript}</Script>
         <MotionController />
+        <div className="scroll-progress" aria-hidden="true" />
         <a className="skip-link" href="#main">Zum Inhalt springen</a>
         <SiteHeader />
         <main id="main">{children}</main>
