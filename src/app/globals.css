@@ -387,15 +387,15 @@ main { padding-top: 96px; }
 
 .service-cards { display: grid; gap: 1.25rem; position: relative; }
 .service-card {
-  --service-card-bg: color-mix(in srgb, var(--surface) 86%, var(--sand));
+  --service-card-bg: color-mix(in srgb, #f8f5ef 86%, #e5dec4);
   position: relative; overflow: clip; min-height: 220px; padding: clamp(1.5rem, 3.5vw, 3rem);
-  border: 1px solid var(--line); border-radius: 18px 58px; background: var(--service-card-bg); color: var(--ink);
+  border: 1px solid color-mix(in srgb, #4e0401 76%, transparent); border-radius: 18px 58px; background: var(--service-card-bg); color: #11100f;
   scroll-margin-top: 130px;
   transition: min-height 620ms var(--ease), background-color 420ms ease, color 420ms ease, transform 420ms var(--ease);
 }
-.service-card:nth-child(3n + 2) { --service-card-bg: color-mix(in srgb, var(--sand) 78%, var(--paper)); }
-.service-card:nth-child(3n) { --service-card-bg: var(--greige); }
-.service-card[data-open="true"] { min-height: 540px; background: #40191e; color: #ffffff; }
+.service-card:nth-child(3n + 2) { --service-card-bg: color-mix(in srgb, #e5dec4 78%, #ffffff); }
+.service-card:nth-child(3n) { --service-card-bg: #f1ebe6; }
+.service-card[data-open="true"] { --service-card-bg: #40191e; min-height: 540px; background: #40191e; color: #ffffff; }
 .service-card h3 { margin: 0; }
 .service-card-trigger { width: 100%; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
 .service-card-topline { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; }
@@ -412,11 +412,6 @@ main { padding-top: 96px; }
 .service-card-copy { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: start; padding-top: clamp(2rem, 5vw, 4rem); }
 .service-card-copy svg { margin-top: .35rem; color: var(--gold); }
 .service-card-copy p { max-width: 62ch; margin: 0; font-size: clamp(1.05rem, 1.75vw, 1.5rem); line-height: 1.5; text-wrap: pretty; }
-[data-theme="dark"] .service-card { --service-card-bg: color-mix(in srgb, var(--surface) 88%, #ffffff 4%); }
-[data-theme="dark"] .service-card:nth-child(3n + 2) { --service-card-bg: color-mix(in srgb, var(--sand) 84%, var(--surface)); }
-[data-theme="dark"] .service-card:nth-child(3n) { --service-card-bg: color-mix(in srgb, var(--greige) 45%, var(--surface)); }
-[data-theme="dark"] .service-card[data-open="true"] { --service-card-bg: #e5dec4; background: #e5dec4; color: #221b18; }
-
 .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(3rem, 8vw, 8rem); align-items: start; }
 .about-visual { position: sticky; top: 130px; }
 .about-portrait { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 56px 12px; border: 1px solid var(--line); background: var(--sand); }
