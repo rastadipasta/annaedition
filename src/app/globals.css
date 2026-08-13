@@ -6,7 +6,7 @@
   --wine: #4e0401;
   --wine-soft: #6c201d;
   --sand: #e5dec4;
-  --greige: #afa292;
+  --greige: #f1ebe6;
   --gold: #ae895d;
   --surface: #f8f5ef;
   --line: color-mix(in srgb, var(--wine) 76%, transparent);
@@ -394,7 +394,7 @@ main { padding-top: 96px; }
   transition: min-height 620ms var(--ease), background-color 420ms ease, color 420ms ease, transform 420ms var(--ease), box-shadow 420ms ease;
 }
 .service-card:nth-child(3n + 2) { --service-card-bg: color-mix(in srgb, var(--sand) 78%, var(--paper)); }
-.service-card:nth-child(3n) { --service-card-bg: color-mix(in srgb, var(--greige) 52%, var(--paper)); }
+.service-card:nth-child(3n) { --service-card-bg: var(--greige); }
 .service-card[data-open="true"] { min-height: 540px; background: #40191e; color: #ffffff; box-shadow: 0 30px 85px rgb(52 19 15 / 22%); }
 .service-card h3 { margin: 0; }
 .service-card-trigger { width: 100%; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }

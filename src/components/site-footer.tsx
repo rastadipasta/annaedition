@@ -16,8 +16,8 @@ export function SiteFooter() {
           <nav className="footer-nav" aria-label="Rechtliches und soziale Netzwerke">
             <Link href="/impressum">Impressum</Link>
             <Link href="/datenschutz">Datenschutz</Link>
-            <a href="https://instagram.com" rel="noreferrer" target="_blank">Instagram</a>
-            <a href="https://pinterest.com" rel="noreferrer" target="_blank">Pinterest</a>
+            <a href="https://www.instagram.com/anna_edition_/" rel="noreferrer" target="_blank">Instagram</a>
+            <a href="https://www.pinterest.com/anna_edition/" rel="noreferrer" target="_blank">Pinterest</a>
           </nav>
         </div>
         <div className="footer-bottom">
