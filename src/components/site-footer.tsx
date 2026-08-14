@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookieSettingsButton } from "@/components/cookie-consent";
 import { navigation } from "@/lib/content";
 
 export function SiteFooter() {
@@ -16,6 +17,7 @@ export function SiteFooter() {
           <nav className="footer-nav" aria-label="Rechtliches und soziale Netzwerke">
             <Link href="/impressum">Impressum</Link>
             <Link href="/datenschutz">Datenschutz</Link>
+            <CookieSettingsButton />
             <a href="https://www.instagram.com/anna_edition_/" rel="noreferrer" target="_blank">Instagram</a>
             <a href="https://www.pinterest.com/anna_edition/" rel="noreferrer" target="_blank">Pinterest</a>
           </nav>

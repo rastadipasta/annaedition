@@ -26,6 +26,7 @@ export function ThemeToggle() {
     const applyTheme = () => {
       document.documentElement.dataset.theme = next;
       updateBrowserThemeColor(next);
+      if (document.cookie.split("; ").some((entry) => entry === "anna_cookie_consent=all")) localStorage.setItem("anna-theme", next);
       setTheme(next);
     };
     const transitionDocument = document as Document & { startViewTransition?: (callback: () => void) => unknown };

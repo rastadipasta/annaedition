@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { BackToTop } from "@/components/back-to-top";
+import { CookieConsent } from "@/components/cookie-consent";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { MotionController } from "@/components/motion-controller";
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#ffffff" };
 
-const themeScript = `(function(){document.documentElement.dataset.theme='light'})()`;
+const themeScript = `(function(){try{var consent=document.cookie.split('; ').find(function(v){return v.indexOf('anna_cookie_consent=')===0});var allowed=consent&&consent.split('=')[1]==='all';var saved=allowed?localStorage.getItem('anna-theme'):null;document.documentElement.dataset.theme=saved==='dark'?'dark':'light'}catch(e){document.documentElement.dataset.theme='light'}})()`;
 const motionScript = `(function(){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-enabled')}catch(e){}})()`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main id="main">{children}</main>
         <SiteFooter />
         <BackToTop />
+        <CookieConsent />
       </body>
     </html>
   );
