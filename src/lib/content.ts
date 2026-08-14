@@ -68,7 +68,7 @@ export const packages = [
     name: "Édition Essentielle",
     eyebrow: "Atmosphäre & Stil",
     description: "Der perfekte Einstieg für eine klare gestalterische Richtung.",
-    features: ["Moodboard & Farbkonzept", "Material- & Oberflächenberatung", "Praktische Shoppingliste"],
+    features: ["Moodboard & Farbkonzept", "Material- & Oberflächenberatung", "Farb- & Materialkarte (für Wände & Oberflächen)"],
     price: "49 € / m²",
   },
   {
@@ -82,19 +82,19 @@ export const packages = [
     name: "Édition Unique",
     eyebrow: "Das Gesamtkonzept",
     description: "Das Rundum-sorglos-Paket für dein neues Zuhause.",
-    features: ["Möblierungskonzept", "Realistische 3D-Visualisierung", "Shoppingliste", "Finales Styling & Dokumentation"],
+    features: ["Möblierungskonzept", "Realistische 3D-Visualisierung", "Detaillierte Möbel-Shoppingliste (mit Direktlinks)", "Einkauf & Finales Styling (Persönlich vor Ort)"],
     price: "129 € / m²",
   },
 ];
 
 export const services = [
   { title: "Raum- & Grundkonzepte", text: "Ein Raum funktioniert nur dann richtig, wenn die Aufteilung stimmt. Wir schauen uns deinen vorhandenen Grundriss genau an und entwickeln Lösungen, die perfekt zu deinem Alltag passen. Dabei verbessern wir die Proportionen und holen das Beste aus jedem Quadratmeter heraus. Denn für uns bedeutet Planung nicht, einfach nur Möbel in ein Zimmer zu stellen – sondern den Raum so zu gestalten, dass du dich darin rundum wohlfühlen kannst." },
-  { title: "Moodboards & Farbkonzepte", text: "Die Auswahl an Farben und Stoffen ist riesig – wir helfen dir, den roten Faden zu finden. Wir erstellen für dich ein harmonisches Farb- und Materialkonzept, das genau zu deinem Geschmack passt. Durch diese Übersicht siehst du sofort, wie die verschiedenen Töne und Oberflächen zusammenwirken. Das gibt dir Sicherheit bei der Auswahl von Wandfarben, Textilien und Möbeln." },
+  { title: "Farb- & Materialkarte", text: "Zu jedem Basiskonzept erstellen wir für dich eine übersichtliche Farb- und Materialkarte für deine Wandgestaltung und Oberflächen. Du bekommst konkrete Farbnummern, Tapetenempfehlungen und nützliche Materialhinweise genannt, damit die Basis deines Raumes perfekt abgestimmt ist. (Möbel-Produktempfehlungen sind in dieser Karte nicht enthalten)." },
   { title: "Material- & Oberflächenberatung", text: "Materialien machen einen Raum erst lebendig – das geht weit über das Aussehen hinaus. Aus Naturstein, Holz, gemütlichen Stoffen und den passenden Farben entsteht eine Wohnwelt, die Ruhe und Gemütlichkeit ausstrahlt. Bei jeder Auswahl achten wir darauf, dass das Material praktisch ist, sich gut anfühlt und lange hält." },
   { title: "Möblierungskonzepte", text: "Damit dein Zuhause perfekt zu deinem Alltag passt, planen wir die Aufteilung deiner Möbel von Grund auf durch. Wir achten darauf, dass Laufwege frei bleiben, genügend Stauraum vorhanden ist und alle Möbelstücke optisch harmonieren. Du erhältst von uns ein klares Konzept, das dir genau zeigt, wie du deine Räume am besten einrichten und nutzen kannst." },
   { title: "3D-Visualisierungen", text: "Durch realistische 3D-Bilder siehst du schon vor dem Umbau ganz genau, wie dein neuer Raum später aussehen wird. Das gibt dir absolute Sicherheit bei deinen Entscheidungen, weil du das fertige Ergebnis schon vorab virtuell erleben kannst." },
-  { title: "Shoppingliste", text: "Zu jedem Konzept erstellen wir für dich eine übersichtliche Einkaufsliste mit passenden Möbeln und Materialien. Du bekommst von uns konkrete Empfehlungen, nützliche Produkthinweise und direkt die passenden Händler genannt – natürlich genau abgestimmt auf deinen Geschmack und dein Budget." },
-  { title: "Finales Styling & visuelle Dokumentation", text: "Wenn die Möbel stehen, kümmern wir uns um das Feintuning. Wir dekorieren deine Räume mit dem passenden Blick für Details, damit eine rundum gemütliche Atmosphäre entsteht. Zum Abschluss fassen wir alles, was wir gemeinsam erarbeitet haben, in einer hochwertigen Präsentationsmappe für dich zusammen. Vom ersten Moodboard über die Farbkonzepte bis hin zu den finalen Plänen hast du so das gesamte Design deines Zuhauses kompakt, übersichtlich und wunderschön aufbereitet in der Hand." },
+  { title: "Detaillierte Möbel-Shoppingliste", text: "Ideen werden zu realen Möbeln. Du erhältst eine vollständige, maßgeschneiderte Produktliste für alle Einrichtungsgegenstände deines Raumes (Sofa, Tische, Leuchten, Teppiche etc.). Wir nennen dir exakte Maße, Preise und packen die direkten Online-Links zu den Händlern dazu. So kannst du alles stressfrei, stilsicher und ohne langes Suchen nachkaufen." },
+  { title: "Einkauf & Finales Styling (Vor Ort)", text: "Der krönende Abschluss deines Projekts direkt bei dir vor Ort. Wenn deine Möbel geliefert und aufgebaut sind, komme ich persönlich in deine Wohnung. Wir gehen auf Wunsch gemeinsam Accessoires einkaufen und ich setze Kissen, Leuchten, Pflanzen und Dekoration mit dem passenden Blick für Details in deinen fertigen Räumen in Szene. Für dich entstehen so wunderschöne Wohnwelten mit echtem Wohlfühlcharakter." },
   { title: "Maßanfertigungen & Sonderlösungen", text: "Wir finden für jede Raumsituation die passende Lösung. Wenn Standardmöbel an ihre Grenzen stoßen, entwerfen wir maßgeschneiderte Sonderlösungen – vom perfekt eingepassten Einbauschrank bis hin zu individuellen Raumteilern. Wir übernehmen die detailgetreue Planung und arbeiten eng mit erfahrenen Handwerkern zusammen, damit am Ende alles millimetergenau passt und höchsten Komfort in deinen Alltag bringt." },
 ];
 

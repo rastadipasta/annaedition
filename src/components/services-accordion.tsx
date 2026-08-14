@@ -5,12 +5,12 @@ import type { ServiceItem } from "@/lib/types";
 
 const serviceTags = [
   ["Grundrissanalyse", "Raumfluss", "Proportionen"],
-  ["Farben", "Stoffe", "Materialwelt"],
+  ["Wandfarben", "Tapeten", "Oberflächen"],
   ["Naturstein", "Holz", "Oberflächen", "Haptik"],
   ["Möblierung", "Laufwege", "Stauraum"],
   ["Fotorealistisch", "Entscheidungssicherheit", "Vorher erleben"],
-  ["Produktauswahl", "Händler", "Budget"],
-  ["Styling", "Feintuning", "Präsentationsmappe"],
+  ["Möbel", "Maße", "Direktlinks"],
+  ["Vor Ort", "Accessoires", "Finales Styling"],
   ["Einbauten", "Raumteiler", "Handwerk"],
 ];
 
