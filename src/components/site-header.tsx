@@ -48,7 +48,6 @@ export function SiteHeader() {
           {first.map(navLink)}
         </div>
         <Link className="brand" href="/" aria-label="ANNA ÉDITION – Startseite">
-          <span className="brand-mark" aria-hidden="true" />
           <span className="brand-copy" aria-hidden="true">
             <span className="brand-title">ANNA ÉDITION</span>
             <span className="brand-script script">interior design</span>
