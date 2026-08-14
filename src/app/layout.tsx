@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: { default: "ANNA ÉDITION | Interior Design", template: "%s | ANNA ÉDITION" },
   description: "Zeitlose Interior-Konzepte, 3D-Visualisierungen und persönliche Einrichtungsberatung am Niederrhein und online.",
+  icons: { icon: [{ url: "/brand/monogram.svg", type: "image/svg+xml" }], shortcut: "/brand/monogram.svg" },
   alternates: { canonical: "/" },
   openGraph: { type: "website", locale: "de_DE", siteName: "ANNA ÉDITION", title: "ANNA ÉDITION | Interior Design", description: "Curated. Timeless. Unique. Interior Design für Räume mit Persönlichkeit.", images: ["/images/moodboard.jpg"] },
   twitter: { card: "summary_large_image" },

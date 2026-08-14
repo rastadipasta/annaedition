@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="container" data-motion="reveal">
         <div className="footer-grid">
           <div>
-            <div className="footer-title">ANNA ÉDITION</div>
+            <div className="footer-logo" role="img" aria-label="ANNA ÉDITION Interior Design" />
             <p className="lede">Interior Design am Niederrhein und online – ehrlich, persönlich und sicher geplant.</p>
           </div>
           <nav className="footer-nav" aria-label="Footer Navigation">

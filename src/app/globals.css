@@ -208,7 +208,9 @@ main { padding-top: 96px; }
 .nav-link { position: relative; font-size: .9rem; }
 .nav-link::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -5px; height: 1px; background: var(--wine); transition: right 240ms var(--ease); }
 .nav-link:hover::after, .nav-link[aria-current="page"]::after { right: 0; }
-.brand { min-width: 390px; text-align: center; line-height: 1; }
+.brand { min-width: 390px; display: grid; grid-template-columns: auto auto; justify-content: center; align-items: center; gap: .7rem; text-align: center; line-height: 1; }
+.brand-mark { width: 28px; aspect-ratio: 160 / 241; background: url("/brand/monogram.svg") center / contain no-repeat; }
+.brand-copy { display: block; min-width: 0; }
 .brand-title { display: block; font-family: var(--font-display), Georgia, serif; font-size: clamp(1.8rem, 3vw, 2.7rem); letter-spacing: .22em; }
 .brand-script { display: flex; align-items: center; gap: .6rem; color: var(--wine); font-family: var(--font-navbar-script), "Segoe Script", "Brush Script MT", cursive; font-size: 1.15rem; }
 .brand-script::before, .brand-script::after { content: ""; height: 1px; flex: 1; background: var(--line); }
@@ -289,6 +291,10 @@ main { padding-top: 96px; }
   background: linear-gradient(115deg, #40191e 12%, #6c201d 54%, #40191e 88%);
   clip-path: inset(0 100% 0 0 round 0 64px 64px 0);
 }
+.motion-callout::after {
+  content: ""; position: absolute; z-index: 0; top: 50%; right: clamp(-4rem, 2vw, 2rem); width: min(22vw, 280px); aspect-ratio: 160 / 241;
+  background: url("/brand/monogram.svg") center / contain no-repeat; opacity: .1; pointer-events: none; transform: translateY(-50%) rotate(3deg);
+}
 .motion-callout .callout-grid { position: relative; z-index: 1; }
 .callout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 7vw, 7rem); align-items: center; }
 .callout h2 { font-size: clamp(3.2rem, 6.6vw, 6.8rem); margin: 1.5rem 0 2rem; }
@@ -301,7 +307,8 @@ main { padding-top: 96px; }
 
 .footer { position: sticky; bottom: 0; z-index: 0; border-top: 1px solid var(--line); border-radius: 42px 42px 0 0; padding: 4rem 0 2rem; background: var(--paper); }
 .footer-grid { display: grid; grid-template-columns: 1.2fr .8fr .8fr; gap: 2rem; }
-.footer-title { font-family: var(--font-display), Georgia, serif; font-size: 2.3rem; letter-spacing: .16em; }
+.footer-logo { width: min(260px, 100%); aspect-ratio: 890 / 424; background: url("/brand/logo-light.svg") left center / contain no-repeat; }
+[data-theme="dark"] .footer-logo { background-image: url("/brand/logo-dark.svg"); }
 .footer-nav { display: flex; flex-direction: column; gap: .55rem; font-size: .9rem; }
 .footer-bottom { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .8rem; }
 
@@ -509,7 +516,8 @@ main { padding-top: 96px; }
   .section { padding-block: 5rem; }
   .nav-shell { grid-template-columns: 48px 1fr 48px; border-radius: 0 0 30px 30px; }
   main { padding-top: 82px; }
-  .brand { min-width: 0; }
+  .brand { min-width: 0; gap: .45rem; }
+  .brand-mark { width: 23px; }
   .brand-title { font-size: 1.35rem; letter-spacing: .15em; }
   .brand-script { font-size: .85rem; }
   .nav-group { gap: 0; }
@@ -526,6 +534,7 @@ main { padding-top: 96px; }
   .section-heading h1, .section-heading h2 { font-size: clamp(3.4rem, 14vw, 5rem); }
   .project-feature .image-frame { min-height: 440px; }
   .callout-grid { gap: 2.5rem; }
+  .motion-callout::after { top: 68%; right: -3rem; width: 180px; opacity: .07; }
   .callout-copy .lede { line-height: 1.8; margin-bottom: 2rem; }
   .callout-price { margin-bottom: 2rem; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
