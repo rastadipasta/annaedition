@@ -30,7 +30,7 @@ export default async function HomePage() {
             <p className="lede" data-motion="load" data-motion-order="2">{cms?.heroIntro || "Wir gestalten durchdachte, funktionale Räume, die deine Persönlichkeit widerspiegeln und die Zeit überdauern."}</p>
             <div className="hero-actions" data-motion="load" data-motion-order="3">
               <Link className="button-link" href="/projekte">Projekte entdecken <ArrowRight size={16} /></Link>
-              <Link className="button-link" href="/kontakt">Kontakt <ArrowRight size={16} /></Link>
+              <Link className="button-link hero-contact-button" href="/kontakt">Kontakt <ArrowRight size={16} /></Link>
             </div>
           </div>
           <div className="hero-media" data-motion="load" data-motion-variant="image" data-motion-order="2" data-scroll-parallax>

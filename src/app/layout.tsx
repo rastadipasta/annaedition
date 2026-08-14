@@ -5,6 +5,7 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { MotionController } from "@/components/motion-controller";
+import { SiteLoader } from "@/components/site-loader";
 import { baseUrl } from "@/lib/content";
 import { display, manrope, navbarScript } from "@/lib/fonts";
 import "./globals.css";
@@ -23,6 +24,7 @@ export const viewport: Viewport = { width: "device-width", initialScale: 1, them
 
 const themeScript = `(function(){try{var consent=document.cookie.split('; ').find(function(v){return v.indexOf('anna_cookie_consent=')===0});var allowed=consent&&consent.split('=')[1]==='all';var saved=allowed?localStorage.getItem('anna-theme'):null;document.documentElement.dataset.theme=saved==='dark'?'dark':'light'}catch(e){document.documentElement.dataset.theme='light'}})()`;
 const motionScript = `(function(){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-enabled')}catch(e){}})()`;
+const loaderScript = `(function(){try{var enabled=!matchMedia('(prefers-reduced-motion: reduce)').matches&&!sessionStorage.getItem('anna-site-intro-seen');window.__annaIntroEnabled=enabled;document.documentElement.classList.add(enabled?'site-intro-enabled':'site-intro-skip')}catch(e){window.__annaIntroEnabled=false;document.documentElement.classList.add('site-intro-skip')}})()`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -30,6 +32,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <Script id="anna-theme" strategy="beforeInteractive">{themeScript}</Script>
         <Script id="anna-motion" strategy="beforeInteractive">{motionScript}</Script>
+        <Script id="anna-loader" strategy="beforeInteractive">{loaderScript}</Script>
+        <SiteLoader />
         <MotionController />
         <div className="scroll-progress" aria-hidden="true" />
         <a className="skip-link" href="#main">Zum Inhalt springen</a>
