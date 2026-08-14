@@ -125,10 +125,10 @@ body::before {
   to { transform: scaleX(1); }
 }
 @keyframes loader-curtain-out {
-  to { opacity: 0; transform: translateY(-100%); }
+  to { opacity: 0; }
 }
 @keyframes loader-mark-out {
-  to { opacity: 0; transform: translateY(-18px); }
+  to { opacity: 0; }
 }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; }
