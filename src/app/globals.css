@@ -79,7 +79,7 @@ body::before {
   letter-spacing: .28em;
   text-transform: uppercase;
   opacity: 0;
-  animation: loader-copy-in 520ms var(--ease) 120ms forwards;
+  animation: loader-copy-in 650ms var(--ease) 150ms forwards;
 }
 .site-loader-wordmark {
   font-family: var(--font-display), Georgia, serif;
@@ -90,7 +90,7 @@ body::before {
   white-space: nowrap;
   opacity: 0;
   transform: translateY(20px);
-  animation: loader-copy-in 720ms var(--ease) 250ms forwards;
+  animation: loader-copy-in 900ms var(--ease) 300ms forwards;
 }
 .site-loader-rule {
   width: min(560px, 82%);
@@ -106,17 +106,17 @@ body::before {
   background: #4e0401;
   transform: scaleX(0);
   transform-origin: left center;
-  animation: loader-line 900ms var(--ease) 420ms forwards;
+  animation: loader-line 1100ms var(--ease) 500ms forwards;
 }
 .site-loader-script {
   display: block;
   color: #4e0401;
   font-size: clamp(1.3rem, 2.8vw, 2rem);
   opacity: 0;
-  animation: loader-copy-in 520ms var(--ease) 700ms forwards;
+  animation: loader-copy-in 700ms var(--ease) 900ms forwards;
 }
-.site-loader[data-phase="exit"] { animation: loader-curtain-out 700ms var(--ease) forwards; }
-.site-loader[data-phase="exit"] .site-loader-inner { animation: loader-mark-out 400ms ease forwards; }
+.site-loader[data-phase="exit"] { animation: loader-curtain-out 1200ms var(--ease) forwards; }
+.site-loader[data-phase="exit"] .site-loader-inner { animation: loader-mark-out 700ms ease forwards; }
 
 @keyframes loader-copy-in {
   to { opacity: 1; transform: translateY(0); }
@@ -125,7 +125,7 @@ body::before {
   to { transform: scaleX(1); }
 }
 @keyframes loader-curtain-out {
-  to { transform: translateY(-100%); }
+  to { opacity: 0; transform: translateY(-100%); }
 }
 @keyframes loader-mark-out {
   to { opacity: 0; transform: translateY(-18px); }

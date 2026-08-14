@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-const loaderDuration = 1750;
-const loaderExitDuration = 700;
+const loaderDuration = 2200;
+const loaderExitDuration = 1200;
 
 export function SiteLoader() {
   const [phase, setPhase] = useState<"loading" | "exit" | "done">("loading");
