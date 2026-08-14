@@ -587,6 +587,7 @@ main { padding-top: 96px; }
   .callout-price { margin-bottom: 2rem; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid > :first-child { grid-column: 1 / -1; }
+  .footer-logo { margin-inline: auto; background-position: center; }
   .footer-bottom { flex-direction: column; }
   .project-grid { display: block; }
   .project-card, .project-card:nth-child(n) { padding-top: 0; margin-bottom: 4rem; }
