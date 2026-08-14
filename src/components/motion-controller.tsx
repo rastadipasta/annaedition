@@ -16,6 +16,9 @@ export function MotionController() {
     const revealAll = () => {
       document.querySelectorAll<HTMLElement>(revealSelector).forEach((element) => element.classList.add("is-revealed"));
     };
+    const startTypewriter = () => {
+      document.querySelector<HTMLElement>(".typewriter-title")?.classList.add("is-typewriting");
+    };
     const observer = typeof window.IntersectionObserver === "function"
       ? new IntersectionObserver(
           (entries) => {
@@ -70,6 +73,10 @@ export function MotionController() {
 
     applyPreference();
 
+    const activeLoader = document.querySelector<HTMLElement>('.site-loader[data-phase="loading"]');
+    if (!activeLoader || window.getComputedStyle(activeLoader).display === "none") startTypewriter();
+    window.addEventListener("anna:intro-exit", startTypewriter);
+
     const main = document.querySelector("#main");
     const mutations = main && "MutationObserver" in window
       ? new MutationObserver((records) => {
@@ -98,6 +105,7 @@ export function MotionController() {
       window.removeEventListener("scroll", scheduleFallback);
       window.removeEventListener("resize", scheduleFallback);
       window.removeEventListener("anna:motion-refresh", refresh);
+      window.removeEventListener("anna:intro-exit", startTypewriter);
       reducedMotion.removeEventListener("change", applyPreference);
     };
   }, [pathname]);

@@ -89,4 +89,27 @@ describe("MotionController", () => {
     await waitFor(() => expect(target).toHaveClass("is-revealed"));
     expect(document.documentElement).toHaveClass("motion-enabled");
   });
+
+  it("waits for the loader exit before starting the hero typewriter", () => {
+    const { container } = render(
+      <>
+        <MotionController />
+        <div className="site-loader" data-phase="loading" style={{ display: "grid" }} />
+        <h1 className="typewriter-title"><span className="typewriter-line">Thoughtful</span></h1>
+      </>,
+    );
+    const title = container.querySelector<HTMLElement>(".typewriter-title")!;
+
+    expect(title).not.toHaveClass("is-typewriting");
+    act(() => window.dispatchEvent(new Event("anna:intro-exit")));
+    expect(title).toHaveClass("is-typewriting");
+  });
+
+  it("starts the hero typewriter immediately when no loader is visible", () => {
+    const { container } = render(
+      <><MotionController /><h1 className="typewriter-title"><span className="typewriter-line">Thoughtful</span></h1></>,
+    );
+
+    expect(container.querySelector(".typewriter-title")).toHaveClass("is-typewriting");
+  });
 });

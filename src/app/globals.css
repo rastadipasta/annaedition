@@ -358,7 +358,7 @@ main { padding-top: 96px; }
 .hero-copy { padding-left: clamp(0rem, 2vw, 2rem); }
 .hero-title { margin: 2.3rem 0 1.8rem; font-size: clamp(3.6rem, 6.2vw, 6rem); line-height: 1.12; }
 .typewriter-line { display: inline-block; }
-.motion-enabled .typewriter-line {
+.motion-enabled .typewriter-title.is-typewriting .typewriter-line {
   will-change: clip-path;
   animation: typewriter-line 320ms steps(10, end) backwards;
 }

@@ -22,6 +22,8 @@ describe("SiteLoader", () => {
   });
 
   it("runs the 2.2 second intro and 1.2 second exit before restoring the page", () => {
+    const onIntroExit = vi.fn();
+    window.addEventListener("anna:intro-exit", onIntroExit);
     const { container } = render(<SiteLoader />);
     const loader = () => container.querySelector<HTMLElement>(".site-loader");
 
@@ -33,6 +35,7 @@ describe("SiteLoader", () => {
 
     act(() => vi.advanceTimersByTime(1));
     expect(loader()).toHaveAttribute("data-phase", "exit");
+    expect(onIntroExit).toHaveBeenCalledOnce();
 
     act(() => vi.advanceTimersByTime(1199));
     expect(loader()).toHaveAttribute("data-phase", "exit");
@@ -41,6 +44,7 @@ describe("SiteLoader", () => {
     expect(loader()).toBeNull();
     expect(document.body.style.overflow).toBe("");
     expect(window.sessionStorage.getItem("anna-site-intro-seen")).toBe("true");
+    window.removeEventListener("anna:intro-exit", onIntroExit);
   });
 
   it("does not render when the entry script disables the intro", () => {

@@ -19,7 +19,10 @@ export function SiteLoader() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    const exitTimer = window.setTimeout(() => setPhase("exit"), loaderDuration);
+    const exitTimer = window.setTimeout(() => {
+      window.dispatchEvent(new Event("anna:intro-exit"));
+      setPhase("exit");
+    }, loaderDuration);
     const doneTimer = window.setTimeout(() => {
       try {
         window.sessionStorage.setItem("anna-site-intro-seen", "true");
