@@ -526,6 +526,7 @@ main { padding-top: 96px; }
 .callout h2 { font-size: clamp(3.2rem, 6.6vw, 6.8rem); margin: 1.5rem 0 2rem; }
 .callout-copy .lede { margin-bottom: 1.75rem; }
 .callout-price { margin: 0 0 1.75rem; color: #ae895d; font-size: 2rem; }
+.services-callout-price { margin: clamp(1.75rem, 2.4vw, 2.4rem) 0 1.75rem; }
 .callout-card { border: 1px solid #ae895d; border-radius: 56px 12px; padding: clamp(2rem, 4vw, 4rem); }
 .callout-card ol { margin: 0; padding: 0; list-style: none; counter-reset: item; }
 .callout-card li { position: relative; padding: 1.1rem 0 1.1rem 3rem; border-bottom: 1px solid rgb(174 137 93 / 45%); }
