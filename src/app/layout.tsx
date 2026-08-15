@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Suspense } from "react";
 import { BackToTop } from "@/components/back-to-top";
 import { CookieConsent } from "@/components/cookie-consent";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { MotionController } from "@/components/motion-controller";
 import { SiteLoader } from "@/components/site-loader";
+import { PageCurtainProvider } from "@/components/page-curtain";
 import { baseUrl } from "@/lib/content";
 import { display, manrope, navbarScript } from "@/lib/fonts";
 import "./globals.css";
@@ -34,11 +36,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Script id="anna-motion" strategy="beforeInteractive">{motionScript}</Script>
         <Script id="anna-loader" strategy="beforeInteractive">{loaderScript}</Script>
         <SiteLoader />
+        <Suspense fallback={null}>
+          <PageCurtainProvider />
+        </Suspense>
         <MotionController />
         <div className="scroll-progress" aria-hidden="true" />
         <a className="skip-link" href="#main">Zum Inhalt springen</a>
         <SiteHeader />
-        <main id="main">{children}</main>
+        <main id="main" tabIndex={-1}>{children}</main>
         <SiteFooter />
         <BackToTop />
         <CookieConsent />
