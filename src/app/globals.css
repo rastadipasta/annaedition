@@ -373,10 +373,40 @@ main { padding-top: 96px; }
 .hero-media { position: relative; aspect-ratio: .96; border: 1px solid var(--line); border-radius: 56px 56px 56px 12px; overflow: hidden; box-shadow: var(--shadow); }
 .hero-media img { object-fit: cover; }
 .hero-actions { display: flex; gap: 2rem; margin-top: 2rem; }
-.hero-contact-button { padding-inline: 1.25rem; border-bottom: 0; border-radius: 999px; background: #000000; color: #ffffff; }
-.hero-contact-button:hover, .hero-contact-button:focus-visible { background: var(--wine); color: #ffffff; }
+.hero-cta-button {
+  min-width: 145px;
+  justify-content: center;
+  padding-inline: 1.25rem;
+  border: 0;
+  border-radius: 999px;
+  box-shadow: 0 10px 26px rgb(45 8 7 / 12%);
+  transform: translateZ(0) scale(1);
+  transition: transform 500ms var(--ease), gap 500ms var(--ease), background-color 300ms ease, color 300ms ease, box-shadow 500ms var(--ease);
+}
+.hero-cta-button svg { transition: transform 500ms var(--ease); }
+.hero-projects-button { background: #4e0401; color: #ffffff; }
+.hero-contact-button { background: #000000; color: #ffffff; }
+.hero-cta-button:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.hero-projects-button:focus-visible { background: var(--gold); color: #40191e; }
+.hero-contact-button:focus-visible { background: var(--wine); color: #ffffff; }
 [data-theme="dark"] .hero-contact-button { background: #ffffff; color: #000000; }
-[data-theme="dark"] .hero-contact-button:hover, [data-theme="dark"] .hero-contact-button:focus-visible { background: var(--sand); color: #000000; }
+[data-theme="dark"] .hero-projects-button { background: #ae895d; color: #40191e; }
+[data-theme="dark"] .hero-contact-button:focus-visible { background: var(--sand); color: #000000; }
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-cta-button:hover {
+    gap: 1.45rem;
+    transform: translateY(-3px) scale(1.06);
+    box-shadow: 0 18px 36px rgb(45 8 7 / 22%);
+    transition-duration: 120ms;
+  }
+  .hero-cta-button:hover svg { transform: translateX(4px); transition-duration: 120ms; }
+  .hero-projects-button:hover { background: var(--gold); color: #40191e; }
+  .hero-contact-button:hover { background: var(--wine); color: #ffffff; }
+  [data-theme="dark"] .hero-projects-button:hover { background: #e5dec4; color: #40191e; }
+  [data-theme="dark"] .hero-contact-button:hover { background: var(--sand); color: #000000; }
+}
+.hero-cta-button:active { transform: scale(.98); }
 
 .wine-section { background: #40191e; color: white; }
 .philosophy-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(2rem, 6vw, 6rem); }
@@ -720,6 +750,8 @@ main { padding-top: 96px; }
   ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .01ms !important; }
   [data-motion] { opacity: 1 !important; transform: none !important; }
   .typewriter-line { animation: none !important; clip-path: none !important; }
+  .hero-cta-button, .hero-cta-button:hover, .hero-cta-button:active { transform: none !important; }
+  .hero-cta-button svg, .hero-cta-button:hover svg { transform: none !important; }
   .scroll-progress { display: none !important; }
   .footer { position: relative; bottom: auto; }
 }
