@@ -34,7 +34,7 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="hero-media" data-motion="load" data-motion-variant="image" data-motion-order="2" data-scroll-parallax>
-            <Image src={cms?.heroImage?.url || "/images/moodboard.jpg"} alt={cms?.heroImage?.alt || "Material- und Farbkonzept in Bordeaux, Naturstein und dunklem Holz"} fill priority sizes="(max-width: 800px) 100vw, 52vw" />
+            <Image src={cms?.heroImage?.url || "/images/hero-interior-v3.png"} alt={cms?.heroImage?.alt || "Zeitloser Wohnbereich mit cremefarbenem Bouclé-Sofa, Bordeaux-Sessel und dunklem Holz"} fill priority sizes="(max-width: 800px) 100vw, 52vw" />
           </div>
         </div>
       </section>
