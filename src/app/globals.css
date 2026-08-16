@@ -312,6 +312,9 @@ img { max-width: 100%; }
 }
 :is(h1, h2, h3).display {
   font-family: var(--font-tropical), var(--font-display), Georgia, serif;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: "kern" 1, "liga" 1;
   font-synthesis: none;
 }
 .script { font-family: "Brush Script MT", "Segoe Script", cursive; font-weight: 400; }
