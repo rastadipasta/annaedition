@@ -143,11 +143,15 @@ body::before {
 }
 .page-curtain-title {
   max-width: calc(100vw - 3rem);
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-tropical), var(--font-display), Georgia, serif;
   font-size: clamp(2.8rem, 8vw, 8rem);
   font-weight: 400;
   line-height: .95;
   letter-spacing: -.045em;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: "kern" 1, "liga" 1;
+  font-synthesis: none;
   text-align: center;
   text-wrap: balance;
   will-change: opacity, transform;
