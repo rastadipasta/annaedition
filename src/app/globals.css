@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Tropical Avenue";
+  src: url("/fonts/tropical-avenue.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
+  --font-tropical: "Tropical Avenue";
   --paper: #ffffff;
   --ink: #11100f;
   --wine: #4e0401;
@@ -300,6 +309,10 @@ img { max-width: 100%; }
   font-weight: 400;
   letter-spacing: -.045em;
   line-height: 1.08;
+}
+:is(h1, h2, h3).display {
+  font-family: var(--font-tropical), var(--font-display), Georgia, serif;
+  font-synthesis: none;
 }
 .script { font-family: "Brush Script MT", "Segoe Script", cursive; font-weight: 400; }
 .eyebrow { color: var(--wine); font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; }
