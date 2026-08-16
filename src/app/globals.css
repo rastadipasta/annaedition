@@ -533,10 +533,6 @@ main { padding-top: 96px; }
   background: linear-gradient(115deg, #40191e 12%, #6c201d 54%, #40191e 88%);
   clip-path: inset(0 100% 0 0 round 0 64px 64px 0);
 }
-.motion-callout::after {
-  content: ""; position: absolute; z-index: 0; top: 50%; right: clamp(-4rem, 2vw, 2rem); width: min(22vw, 280px); aspect-ratio: 160 / 241;
-  background: url("/brand/monogram.svg") center / contain no-repeat; opacity: .1; pointer-events: none; transform: translateY(-50%) rotate(3deg);
-}
 .motion-callout .callout-grid { position: relative; z-index: 1; }
 .callout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 7vw, 7rem); align-items: center; }
 .callout h2 { font-size: clamp(3.2rem, 6.6vw, 6.8rem); margin: 1.5rem 0 2rem; }
@@ -789,7 +785,6 @@ main { padding-top: 96px; }
   .section-heading h1, .section-heading h2 { font-size: clamp(3.4rem, 14vw, 5rem); }
   .project-feature .image-frame { min-height: 440px; }
   .callout-grid { gap: 2.5rem; }
-  .motion-callout::after { top: 68%; right: -3rem; width: 180px; opacity: .07; }
   .callout-copy .lede { line-height: 1.8; margin-bottom: 2rem; }
   .callout-price { margin-bottom: 2rem; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
