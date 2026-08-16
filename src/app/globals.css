@@ -641,6 +641,16 @@ main { padding-top: 96px; }
 .service-card-copy { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: start; padding-top: clamp(2rem, 5vw, 4rem); }
 .service-card-copy svg { margin-top: .35rem; color: var(--gold); }
 .service-card-copy p { max-width: 62ch; margin: 0; font-size: clamp(1.05rem, 1.75vw, 1.5rem); line-height: 1.5; text-wrap: pretty; }
+@media (min-width: 801px) {
+  .services-detail-section { padding-bottom: 3rem; }
+  .services-footer-stroke {
+    width: calc(100vw - 80px);
+    height: 1px;
+    margin-inline: auto;
+    background: var(--line);
+    pointer-events: none;
+  }
+}
 .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(3rem, 8vw, 8rem); align-items: start; }
 .about-visual { position: sticky; top: 130px; }
 .about-portrait { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 56px 12px; border: 1px solid var(--line); background: var(--sand); }
