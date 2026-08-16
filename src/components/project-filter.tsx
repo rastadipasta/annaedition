@@ -29,7 +29,7 @@ export function ProjectFilter({ projects }: { projects: Project[] }) {
         {visible.map((project, index) => (
           <article className="project-card" key={project.slug} data-motion="reveal" data-motion-order={String(index % 3)}>
             <Link href={`/projekte/${project.slug}`} aria-label={`${project.title} ansehen`}>
-              <div className="image-frame project-drift" data-scroll-parallax>
+              <div className="image-frame" data-scroll-parallax>
                 <Image src={project.cover} alt={`${project.title} – ${project.category}`} fill loading={index < 2 ? "eager" : "lazy"} sizes="(max-width: 800px) 100vw, 55vw" />
               </div>
               <div className="project-meta"><span>{project.location}, {project.year}</span><span>{project.category}</span></div>
