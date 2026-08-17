@@ -637,11 +637,13 @@ main { padding-top: 96px; }
 .service-card:nth-child(3n) { --service-card-bg: #f1ebe6; }
 .service-card[data-featured="true"] { --service-card-bg: #40191e; min-height: 540px; background: #40191e; color: #ffffff; }
 .service-card h3 { margin: 0; }
-.service-card-topline { display: flex; align-items: center; gap: 1rem; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; }
+.service-card-topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; }
+.service-card-toggle { display: none; }
 .service-card-title { display: block; max-width: 16ch; margin-top: clamp(1.2rem, 3vw, 2.5rem); font-family: var(--font-manrope), "Segoe UI", sans-serif; font-size: clamp(2.6rem, 5.9vw, 6rem); font-weight: 400; letter-spacing: -.055em; line-height: .98; text-wrap: balance; }
 .service-card-tags { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: clamp(1.5rem, 4vw, 3.5rem); }
 .service-card-tags span { padding: .5rem .9rem; border: 1px solid color-mix(in srgb, currentColor 36%, transparent); border-radius: 999px; font-size: .76rem; line-height: 1; }
 .service-card-panel { display: block; }
+.service-card-panel-inner { min-height: 0; }
 .service-card-copy { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: start; padding-top: clamp(2rem, 5vw, 4rem); }
 .service-card-copy svg { margin-top: .35rem; color: var(--gold); }
 .service-card-copy p { max-width: 62ch; margin: 0; font-size: clamp(1.05rem, 1.75vw, 1.5rem); line-height: 1.5; text-wrap: pretty; }
@@ -799,7 +801,20 @@ main { padding-top: 96px; }
   .motion-enabled [data-scroll-parallax] img.about-portrait-image { transform: scaleX(-1) !important; }
   .service-card { min-height: 0; padding: 1.35rem; border-radius: 14px 38px; }
   .service-card[data-featured="true"] { min-height: 0; }
-  .service-card-title { max-width: 100%; font-size: clamp(2.25rem, 10vw, 4rem); line-height: 1.02; }
+  .service-card-toggle {
+    width: 44px; height: 44px; display: grid; flex: 0 0 44px; place-items: center; padding: 0;
+    border: 1px solid currentColor; border-radius: 50%; background: transparent; color: inherit; cursor: pointer;
+    transition: background-color 240ms ease, color 240ms ease, transform 240ms var(--ease);
+  }
+  .service-card-toggle:active { transform: scale(.92); }
+  .service-card-toggle svg { width: 21px; height: 21px; stroke-width: 1.5; }
+  .service-card-title { max-width: calc(100% - 3rem); margin-top: .9rem; font-size: clamp(2.25rem, 10vw, 4rem); line-height: 1.02; }
+  .service-card-panel {
+    display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden;
+    transition: grid-template-rows 480ms var(--ease), opacity 300ms ease, visibility 480ms;
+  }
+  .service-card-panel[data-open="true"] { grid-template-rows: 1fr; opacity: 1; visibility: visible; }
+  .service-card-panel-inner { overflow: hidden; }
   .service-card-tags { margin-top: 1.4rem; }
   .service-card-copy { grid-template-columns: 1.8rem minmax(0, 1fr); gap: .65rem; padding-top: 1.8rem; }
   .service-card-copy p { font-size: 1rem; line-height: 1.65; }
