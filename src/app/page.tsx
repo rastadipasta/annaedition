@@ -34,7 +34,7 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="hero-media" data-motion="load" data-motion-variant="image" data-motion-order="2" data-scroll-parallax>
-            <Image src={cms?.heroImage?.url || "/images/hero-interior-v3.png"} alt={cms?.heroImage?.alt || "Zeitloser Wohnbereich mit cremefarbenem Bouclé-Sofa, Bordeaux-Sessel und dunklem Holz"} fill priority sizes="(max-width: 800px) 100vw, 52vw" />
+            <Image src={cms?.heroImage?.url || "/images/calm-light-wide-studio.png"} alt={cms?.heroImage?.alt || "Offener Wohn- und Küchenbereich mit dunklem Holz, Naturstein und olivgrünen Sitzmöbeln bei Abendlicht"} fill priority sizes="(max-width: 800px) 100vw, 52vw" />
           </div>
         </div>
       </section>
@@ -48,7 +48,7 @@ export default async function HomePage() {
             <Link className="button-link" href="/leistungen">Wie wir zusammenarbeiten <ArrowRight size={16} /></Link>
           </div>
           <div className="philosophy-media" data-motion="reveal" data-motion-variant="image" data-motion-order="1" data-scroll-parallax>
-            <Image src={cms?.philosophyImage?.url || "/images/calm-light-dining.jpg"} alt={cms?.philosophyImage?.alt || "Offener Essbereich mit Naturstein, dunklem Holz und grünen Stühlen"} fill sizes="(max-width: 800px) 100vw, 50vw" />
+            <Image src={cms?.philosophyImage?.url || "/images/calm-light-dining-studio.png"} alt={cms?.philosophyImage?.alt || "Offener Essbereich mit Naturstein, dunklem Holz und olivgrünen Stühlen bei Abendlicht"} fill sizes="(max-width: 800px) 100vw, 50vw" />
           </div>
         </div>
       </section>
