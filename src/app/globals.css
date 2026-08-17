@@ -615,6 +615,10 @@ main { padding-top: 96px; }
     animation: image-scroll-parallax 1ms linear both;
     animation-timeline: view(block); animation-range: cover 0% cover 100%;
   }
+  .motion-enabled [data-scroll-parallax] img.about-portrait-image {
+    animation: none;
+    transform: scaleX(-1);
+  }
   .motion-enabled .motion-callout::before {
     animation: callout-color-sweep 1ms linear both;
     animation-timeline: view(block); animation-range: entry 0% cover 38%;
@@ -652,10 +656,14 @@ main { padding-top: 96px; }
   }
 }
 .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(3rem, 8vw, 8rem); align-items: start; }
-.about-visual { position: sticky; top: 130px; }
+.about-visual,
+.motion-enabled .about-visual[data-motion-variant="image"] { position: sticky; top: 130px; }
 .about-portrait { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 56px 12px; border: 1px solid var(--line); background: var(--sand); }
 .about-portrait img { object-fit: cover; filter: saturate(.78); }
-.about-copy h1 { font-size: clamp(4rem, 7.2vw, 7.4rem); margin: 1rem 0 3rem; }
+.about-portrait img.about-portrait-image,
+.image-frame img.about-portrait-image { object-fit: contain; background: #181818; }
+.about-portrait-image { transform: scaleX(-1); }
+.about-copy h1 { max-width: 7ch; font-size: clamp(3.8rem, 6.6vw, 6.75rem); margin: 1rem 0 3rem; }
 .about-copy h2 { font-size: clamp(2.6rem, 5vw, 5rem); margin: 5rem 0 2rem; }
 .quote { margin: 3rem 0; padding: 2rem 0 2rem 2rem; border-left: 1px solid var(--line); font-family: var(--font-display), Georgia, serif; font-size: clamp(1.8rem, 3vw, 3rem); line-height: 1.15; }
 
@@ -788,15 +796,17 @@ main { padding-top: 96px; }
   .gallery figure, .gallery figure:nth-child(3n) { grid-column: auto; min-height: 440px; }
   .footer { position: relative; bottom: auto; }
   .motion-enabled [data-scroll-parallax] img { animation: none !important; transform: none !important; }
+  .motion-enabled [data-scroll-parallax] img.about-portrait-image { transform: scaleX(-1) !important; }
   .service-card { min-height: 0; padding: 1.35rem; border-radius: 14px 38px; }
   .service-card[data-featured="true"] { min-height: 0; }
   .service-card-title { max-width: 100%; font-size: clamp(2.25rem, 10vw, 4rem); line-height: 1.02; }
   .service-card-tags { margin-top: 1.4rem; }
   .service-card-copy { grid-template-columns: 1.8rem minmax(0, 1fr); gap: .65rem; padding-top: 1.8rem; }
   .service-card-copy p { font-size: 1rem; line-height: 1.65; }
-  .about-visual { position: static; top: auto; }
+  .about-visual,
+  .motion-enabled .about-visual[data-motion-variant="image"] { position: static; top: auto; }
   .about-visual > .script { margin: .9rem 0 0; line-height: 1.25; }
-  .about-copy h1 { margin-top: .5rem; font-size: clamp(3.15rem, 14vw, 3.65rem); letter-spacing: -.035em; line-height: 1.16; }
+  .about-copy h1 { max-width: none; margin-top: .5rem; font-size: clamp(3.15rem, 14vw, 3.65rem); letter-spacing: -.035em; line-height: 1.16; }
   .inquiry-tabs { grid-template-columns: 1fr; }
   .inquiry-tab { min-height: 80px; }
   .form-grid { grid-template-columns: 1fr; }

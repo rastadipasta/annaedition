@@ -34,7 +34,7 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="hero-media" data-motion="load" data-motion-variant="image" data-motion-order="2" data-scroll-parallax>
-            <Image src={cms?.heroImage?.url || "/images/calm-light-wide-studio.png"} alt={cms?.heroImage?.alt || "Offener Wohn- und Küchenbereich mit dunklem Holz, Naturstein und olivgrünen Sitzmöbeln bei Abendlicht"} fill priority sizes="(max-width: 800px) 100vw, 52vw" />
+            <Image src={cms?.heroImage?.url || "/images/hero-interior-v3.png"} alt={cms?.heroImage?.alt || "Zeitloser Wohnbereich mit cremefarbenem Bouclé-Sofa, Bordeaux-Sessel und dunklem Holz"} fill priority sizes="(max-width: 800px) 100vw, 52vw" />
           </div>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default async function HomePage() {
             <p className="lede">{cms?.aboutIntro || "Mit feinem Gespür für Details und einem klaren räumlichen Blick begleite ich dich von der ersten Idee bis zu deinem persönlichen Wunsch-Zuhause."}</p>
             <Link className="button-link" href="/ueber-mich">Mehr über mich <ArrowRight size={16} /></Link>
           </div>
-          <div className="image-frame" style={{ minHeight: 560 }} data-motion="reveal" data-motion-variant="image" data-motion-order="1" data-scroll-parallax><Image src={cms?.aboutImage?.url || "/images/moodboard.jpg"} alt={cms?.aboutImage?.alt || "Materialcollage als Sinnbild für Annas kuratierten Designansatz"} fill sizes="(max-width: 800px) 100vw, 45vw" /></div>
+          <div className="image-frame" style={{ minHeight: 560 }} data-motion="reveal" data-motion-variant="image" data-motion-order="1" data-scroll-parallax><Image className="about-portrait-image" src="/images/anna-portrait.jpg" alt="Schwarz-Weiß-Porträt von Anna Matkovic" fill sizes="(max-width: 800px) 100vw, 45vw" /></div>
         </div>
       </section>
     </div>
