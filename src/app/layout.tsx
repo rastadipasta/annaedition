@@ -40,7 +40,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <PageCurtainProvider />
         </Suspense>
         <MotionController />
-        <div className="scroll-progress" aria-hidden="true" />
         <a className="skip-link" href="#main">Zum Inhalt springen</a>
         <SiteHeader />
         <main id="main" tabIndex={-1}>{children}</main>
