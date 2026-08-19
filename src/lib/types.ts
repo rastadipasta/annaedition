@@ -5,7 +5,18 @@ export type ProjectCategory =
   | "Schlafzimmer"
   | "Home Office"
   | "Eingangsbereiche"
-  | "Bäder";
+  | "Bäder"
+  | "Gesamtkonzepte";
+
+export interface ProjectImage {
+  url: string;
+  alt: string;
+}
+
+export interface ProjectStorySection {
+  heading: string;
+  text: string;
+}
 
 export interface Project {
   slug: string;
@@ -16,8 +27,10 @@ export interface Project {
   excerpt: string;
   description: string;
   materials: string[];
-  cover: string;
-  gallery: string[];
+  cover: ProjectImage;
+  gallery: ProjectImage[];
+  storySections: ProjectStorySection[];
+  order: number;
   featured?: boolean;
 }
 

@@ -48,7 +48,7 @@ export default async function HomePage() {
             <Link className="button-link" href="/leistungen">Wie wir zusammenarbeiten <ArrowRight size={16} /></Link>
           </div>
           <div className="philosophy-media" data-motion="reveal" data-motion-variant="image" data-motion-order="1" data-scroll-parallax>
-            <Image src={cms?.philosophyImage?.url || "/images/calm-light-dining-studio.png"} alt={cms?.philosophyImage?.alt || "Offener Essbereich mit Naturstein, dunklem Holz und olivgrünen Stühlen bei Abendlicht"} fill sizes="(max-width: 800px) 100vw, 50vw" />
+            <Image src={cms?.philosophyImage?.url || "/images/projects/emerald-skyline/02.jpg"} alt={cms?.philosophyImage?.alt || "Emerald Skyline – offener Essbereich mit Naturstein, dunklem Holz und olivgrünen Sitzmöbeln"} fill sizes="(max-width: 800px) 100vw, 50vw" />
           </div>
         </div>
       </section>
@@ -61,7 +61,7 @@ export default async function HomePage() {
           </header>
           <article className="project-feature">
             <div className="image-frame" style={{ minHeight: 620 }} data-motion="reveal" data-motion-variant="image" data-scroll-parallax>
-              <Image src={featured.cover} alt={`${featured.title} – ${featured.category}`} fill sizes="(max-width: 800px) 100vw, 52vw" />
+              <Image src={featured.cover.url} alt={featured.cover.alt} fill sizes="(max-width: 800px) 100vw, 52vw" />
             </div>
             <div data-motion="reveal" data-motion-order="1">
               <p className="eyebrow">{featured.location}, {featured.year}</p>

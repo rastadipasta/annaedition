@@ -3,9 +3,11 @@ import { fallbackProjects, packages, services } from "@/lib/content";
 import type { DesignPackage, HomeContent, PageContent, Project, ServiceItem } from "@/lib/types";
 import { sanityClient } from "@/sanity/client";
 
-const projectsQuery = `*[_type == "project"] | order(year desc) {
-  "slug": slug.current, title, location, year, category, excerpt, description, materials,
-  "cover": cover.asset->url, "gallery": gallery[].asset->url, featured
+const projectsQuery = `*[_type == "project"] | order(coalesce(order, 999) asc, year desc) {
+  "slug": slug.current, title, location, year, category, excerpt, description, materials, "order": coalesce(order, 999),
+  "cover": {"url": cover.asset->url, "alt": coalesce(cover.alt, title + " – Hauptansicht")},
+  "gallery": coalesce(gallery[]{"url": asset->url, "alt": coalesce(alt, ^.title + " – Projektansicht")}, []),
+  "storySections": coalesce(storySections[]{heading, text}, []), featured
 }`;
 
 const homeQuery = `*[_type == "homePage"][0] {

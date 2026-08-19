@@ -65,15 +65,18 @@ const project = defineType({
     defineField({ name: "slug", type: "slug", options: { source: "title" }, validation: (rule) => rule.required() }),
     defineField({ name: "location", title: "Ort", type: "string" }),
     defineField({ name: "year", title: "Jahr", type: "number" }),
-    defineField({ name: "category", title: "Kategorie", type: "string", options: { list: ["Wohn- & Essbereiche", "Küchen", "Schlafzimmer", "Home Office", "Eingangsbereiche", "Bäder"] } }),
+    defineField({ name: "category", title: "Kategorie", type: "string", options: { list: ["Wohn- & Essbereiche", "Küchen", "Schlafzimmer", "Home Office", "Eingangsbereiche", "Bäder", "Gesamtkonzepte"] } }),
     defineField({ name: "excerpt", title: "Kurztext", type: "text", rows: 3 }),
     defineField({ name: "description", title: "Beschreibung", type: "text", rows: 6 }),
     defineField({ name: "materials", title: "Materialien", type: "array", of: [defineArrayMember({ type: "string" })] }),
-    defineField({ name: "cover", title: "Titelbild", type: "image", options: { hotspot: true }, validation: (rule) => rule.required() }),
-    defineField({ name: "gallery", title: "Galerie", type: "array", of: [defineArrayMember({ type: "image", options: { hotspot: true } })] }),
+    defineField({ name: "cover", title: "Titelbild", type: "image", options: { hotspot: true }, fields: [defineField({ name: "alt", title: "Opis slike (alt)", type: "string", validation: (rule) => rule.required() })], validation: (rule) => rule.required() }),
+    defineField({ name: "gallery", title: "Galerie", type: "array", of: [defineArrayMember({ type: "image", options: { hotspot: true }, fields: [defineField({ name: "alt", title: "Opis slike (alt)", type: "string", validation: (rule) => rule.required() })] })] }),
+    defineField({ name: "storySections", title: "Projektgeschichte", type: "array", of: [defineArrayMember({ name: "storySection", title: "Textabschnitt", type: "object", fields: [defineField({ name: "heading", title: "Überschrift", type: "string", validation: (rule) => rule.required() }), defineField({ name: "text", title: "Text", type: "text", rows: 4, validation: (rule) => rule.required() })] })] }),
+    defineField({ name: "order", title: "Reihenfolge", type: "number", validation: (rule) => rule.required().integer().min(1) }),
     defineField({ name: "featured", title: "Auf Startseite zeigen", type: "boolean", initialValue: false }),
     defineField({ name: "seo", type: "seo" }),
   ],
+  orderings: [{ title: "Reihenfolge", name: "orderAsc", by: [{ field: "order", direction: "asc" }] }],
 });
 
 const editablePage = defineType({

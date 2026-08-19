@@ -119,7 +119,7 @@ describe("getCurtainDestination", () => {
     ["telephone links", anchor("tel:+4915752079305")],
     ["email links", anchor("mailto:studio@annaedition.de")],
     ["hash links", anchor("http://localhost/#main")],
-    ["project details", anchor("http://localhost/projekte/after-dark")],
+    ["project details", anchor("http://localhost/projekte/emerald-skyline")],
     ["studio", anchor("http://localhost/studio")],
     ["cookie settings", anchor("http://localhost/?cookie-settings=1")],
     ["downloads", anchor("http://localhost/datenschutz", { download: "" })],

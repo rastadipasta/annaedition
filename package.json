@@ -11,7 +11,9 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "cms:projects:dry": "sanity exec scripts/import-projects.mjs",
+    "cms:projects:import": "sanity exec scripts/import-projects.mjs --with-user-token -- --apply"
   },
   "dependencies": {
     "@react-email/components": "latest",
