@@ -877,6 +877,7 @@ main { padding-top: 96px; }
   .section-heading h1, .section-heading h2 { font-size: clamp(3.4rem, 14vw, 5rem); }
   .project-feature .image-frame { min-height: 440px; }
   .callout-grid { gap: 2.5rem; }
+  .callout .container { width: min(1180px, calc(100% - 56px)); }
   .callout-copy .lede { line-height: 1.8; margin-bottom: 2rem; }
   .callout-price { margin-bottom: 2rem; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
