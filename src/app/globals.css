@@ -399,17 +399,17 @@ img { max-width: 100%; }
 
 .site-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 120; padding: 0;
-  background: transparent;
+  background: var(--paper);
+  transition: background-color 420ms ease;
 }
 main { padding-top: 96px; }
 .nav-shell {
   --nav-gap: clamp(1.5rem, 2.4vw, 2rem);
   position: relative; z-index: 123; min-height: 96px; border-bottom: 1px solid var(--line); border-radius: 0 0 42px 42px;
   display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; column-gap: var(--nav-gap); padding: .8rem clamp(1.5rem, 4vw, 3rem) 1rem;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: var(--paper);
   box-shadow: 0 12px 28px rgb(55 12 10 / 5%);
+  transition: background-color 420ms ease, border-color 420ms ease;
 }
 .nav-group { width: 100%; display: flex; align-items: center; gap: var(--nav-gap); }
 .nav-group:first-child { justify-content: flex-end; }
@@ -420,7 +420,7 @@ main { padding-top: 96px; }
 .nav-link:hover::after, .nav-link[aria-current="page"]::after { right: 0; }
 .brand { min-width: 390px; display: grid; justify-content: center; align-items: center; text-align: center; line-height: 1; }
 .brand-copy { display: block; min-width: 0; }
-.brand-title { display: block; font-family: var(--font-display), Georgia, serif; font-size: clamp(1.8rem, 3vw, 2.7rem); letter-spacing: .22em; }
+.brand-title { display: block; font-family: var(--font-display), Georgia, serif; font-size: clamp(1.8rem, 3vw, 2.7rem); letter-spacing: .22em; text-transform: uppercase; }
 .brand-script { display: flex; align-items: center; gap: .6rem; color: var(--wine); font-family: var(--font-navbar-script), "Segoe Script", "Brush Script MT", cursive; font-size: 1.15rem; }
 .brand-script::before, .brand-script::after { content: ""; height: 1px; flex: 1; background: var(--line); }
 .theme-toggle, .menu-toggle {
@@ -778,12 +778,46 @@ main { padding-top: 96px; }
   .home-page { --home-load-delay: 150ms; --home-load-stagger: 150ms; }
   .container { width: min(100% - 32px, 680px); }
   .section { padding-block: 5rem; }
-  .nav-shell { grid-template-columns: 48px 1fr 48px; border-radius: 0 0 30px 30px; }
+  .nav-shell {
+    grid-template-columns: minmax(0, 1fr) 58px 58px;
+    column-gap: 0;
+    min-height: 82px;
+    padding: 0;
+    border-radius: 0;
+  }
   main { padding-top: 82px; }
-  .brand { min-width: 0; }
-  .brand-title { font-size: 1.35rem; letter-spacing: .15em; }
-  .brand-script { font-size: .85rem; }
-  .nav-group { gap: 0; }
+  .brand {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    height: 82px;
+    justify-content: start;
+    padding-inline: clamp(1rem, 5vw, 2rem);
+    text-align: left;
+  }
+  .brand-title {
+    font-family: var(--font-tropical), var(--font-display), Georgia, serif;
+    font-size: clamp(1.85rem, 7vw, 2.7rem);
+    letter-spacing: -.035em;
+    line-height: 1;
+    text-transform: none;
+    white-space: nowrap;
+  }
+  .brand-script { display: none; }
+  .nav-group { height: 82px; gap: 0; }
+  .nav-group:first-child { grid-column: 3; grid-row: 1; }
+  .nav-group:last-child { grid-column: 2; grid-row: 1; }
+  .nav-group:first-child,
+  .nav-group:last-child { width: 58px; justify-content: stretch; }
+  .theme-toggle,
+  .menu-toggle {
+    width: 58px;
+    height: 82px;
+    border: 0;
+    border-left: 1px solid var(--line);
+    border-radius: 0;
+    background: transparent;
+  }
   .hero {
     min-height: calc(100svh - 82px);
     padding-block: clamp(1.25rem, 3.5svh, 2.5rem);
@@ -868,12 +902,12 @@ main { padding-top: 96px; }
 }
 @media (max-width: 430px) {
   .container { width: calc(100% - 28px); }
-  .nav-shell { padding-inline: .75rem; }
+  .nav-shell { padding-inline: 0; }
   .mobile-menu { top: 88px; left: 14px; right: 14px; max-height: calc(100dvh - 102px); }
   .package { padding-inline: 1.25rem; }
   .package :is(h2, h3) { margin-top: .7rem; margin-bottom: .85rem; line-height: 1.18; }
   .package > p:not(.eyebrow) { line-height: 1.75; }
-  .theme-toggle, .menu-toggle { width: 40px; height: 40px; }
+  .theme-toggle, .menu-toggle { width: 58px; height: 82px; }
   .brand-script::before, .brand-script::after { display: none; }
   .brand-script { justify-content: center; }
   .hero-title { font-size: min(13vw, 3.25rem); }

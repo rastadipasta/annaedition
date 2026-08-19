@@ -49,7 +49,7 @@ export function SiteHeader() {
         </div>
         <Link className="brand" href="/" aria-label="ANNA ÉDITION – Startseite">
           <span className="brand-copy" aria-hidden="true">
-            <span className="brand-title">ANNA ÉDITION</span>
+            <span className="brand-title">Anna Édition</span>
             <span className="brand-script script">interior design</span>
           </span>
         </Link>
