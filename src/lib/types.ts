@@ -40,6 +40,9 @@ export interface DesignPackage {
   description: string;
   features: string[];
   price: string;
+  priceValue?: number;
+  priceCurrency?: string;
+  priceUnit?: string;
 }
 
 export interface ServiceItem {
@@ -50,6 +53,17 @@ export interface ServiceItem {
 export interface CmsImage {
   url: string;
   alt?: string;
+}
+
+export interface SeoContent {
+  title?: string;
+  description?: string;
+  image?: CmsImage;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
 }
 
 export interface PageContent {
@@ -63,6 +77,8 @@ export interface PageContent {
   secondaryTitle?: string;
   secondaryAccentTitle?: string;
   sections?: { heading: string; text: string }[];
+  seo?: SeoContent;
+  faqs?: FaqItem[];
 }
 
 export interface HomeContent {

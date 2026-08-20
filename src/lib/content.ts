@@ -1,4 +1,4 @@
-import type { Project, ProjectCategory } from "@/lib/types";
+import type { FaqItem, Project, ProjectCategory } from "@/lib/types";
 
 export const navigation = [
   { href: "/projekte", label: "Projekte" },
@@ -157,6 +157,9 @@ export const packages = [
     description: "Der perfekte Einstieg für eine klare gestalterische Richtung.",
     features: ["Moodboard & Farbkonzept", "Material- & Oberflächenberatung", "Farb- & Materialkarte (für Wände & Oberflächen)"],
     price: "49 € / m²",
+    priceValue: 49,
+    priceCurrency: "EUR",
+    priceUnit: "m²",
   },
   {
     name: "Édition Élégance",
@@ -164,6 +167,9 @@ export const packages = [
     description: "Für Räume, die im Alltag intuitiv und selbstverständlich funktionieren.",
     features: ["Strukturierte 2D-Raumplanung", "Konkrete Produktempfehlungen", "Abgestimmtes Einrichtungskonzept"],
     price: "69 € / m²",
+    priceValue: 69,
+    priceCurrency: "EUR",
+    priceUnit: "m²",
   },
   {
     name: "Édition Unique",
@@ -171,6 +177,9 @@ export const packages = [
     description: "Das Rundum-sorglos-Paket für dein neues Zuhause.",
     features: ["Möblierungskonzept", "Realistische 3D-Visualisierung", "Detaillierte Möbel-Shoppingliste (mit Direktlinks)", "Einkauf & Finales Styling (Persönlich vor Ort)"],
     price: "129 € / m²",
+    priceValue: 129,
+    priceCurrency: "EUR",
+    priceUnit: "m²",
   },
 ];
 
@@ -185,4 +194,25 @@ export const services = [
   { title: "Maßanfertigungen & Sonderlösungen", text: "Wir finden für jede Raumsituation die passende Lösung. Wenn Standardmöbel an ihre Grenzen stoßen, entwerfen wir maßgeschneiderte Sonderlösungen – vom perfekt eingepassten Einbauschrank bis hin zu individuellen Raumteilern. Wir übernehmen die detailgetreue Planung und arbeiten eng mit erfahrenen Handwerkern zusammen, damit am Ende alles millimetergenau passt und höchsten Komfort in deinen Alltag bringt." },
 ];
 
-export const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+export const serviceFaqs: FaqItem[] = [
+  {
+    question: "Wo bietet ANNA ÉDITION Interior Design an?",
+    answer: "ANNA ÉDITION hat seinen Sitz in Wesel und begleitet Interior-Design-Projekte am Niederrhein, unter anderem in Duisburg und Düsseldorf. Online-Einrichtungsberatungen sind deutschlandweit möglich.",
+  },
+  {
+    question: "Wie funktioniert eine Online-Einrichtungsberatung?",
+    answer: "Nach deiner Anfrage besprechen wir Raum, Wünsche und Budget. Auf Basis deiner Unterlagen erhältst du eine klare gestalterische Richtung, konkrete Empfehlungen und – je nach Paket – Planung, Visualisierungen oder eine Shoppingliste.",
+  },
+  {
+    question: "Was ist in einer 3D-Visualisierung enthalten?",
+    answer: "Die realistische 3D-Visualisierung zeigt die geplante Raumwirkung, Möblierung, Materialien, Farben und Beleuchtung vor der Umsetzung. Der genaue Umfang richtet sich nach dem gewählten Paket und deinem Projekt.",
+  },
+  {
+    question: "Wie setzen sich die Preise zusammen?",
+    answer: "Die Design-Pakete werden nach Quadratmetern kalkuliert. Zusatzleistungen wie ein Beleuchtungskonzept oder eine detaillierte Möbel-Shoppingliste können optional ergänzt werden. Vor Projektstart erhältst du eine transparente Zusammenfassung der Leistungen und Kosten.",
+  },
+  {
+    question: "Was ist Call a Designer?",
+    answer: "Call a Designer ist eine fokussierte 90-minütige Online-Beratung für konkrete Einrichtungsfragen, eine professionelle Zweitmeinung oder schnelle gestalterische Klarheit. Der Festpreis beträgt 500 Euro inklusive Mehrwertsteuer.",
+  },
+];

@@ -23,10 +23,18 @@ const homeQuery = `*[_type == "homePage"][0] {
 
 const pageQuery = `*[_type == "page" && slug.current == $slug][0] {
   eyebrow, title, accentTitle, intro, paragraphs, quote, secondaryTitle, secondaryAccentTitle, sections,
-  "image": {"url": image.asset->url, "alt": image.alt}
+  "image": {"url": image.asset->url, "alt": image.alt},
+  "seo": {
+    "title": seo.title,
+    "description": seo.description,
+    "image": {"url": seo.image.asset->url, "alt": seo.image.alt}
+  },
+  "faqs": coalesce(faqs[]{question, answer}, [])
 }`;
 
-const packagesQuery = `*[_type == "designPackage"] | order(order asc) {name, eyebrow, description, features, price}`;
+const packagesQuery = `*[_type == "designPackage"] | order(order asc) {
+  name, eyebrow, description, features, price, priceValue, priceCurrency, priceUnit
+}`;
 const servicesQuery = `*[_type == "service"] | order(order asc) {title, "text": description}`;
 
 export const getProjects = cache(async (): Promise<Project[]> => {

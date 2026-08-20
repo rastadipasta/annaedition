@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
+import { isIndexableDeployment } from "@/lib/seo";
 import { getPageContent } from "@/sanity/queries";
 
-export const metadata: Metadata = { title: "Impressum", robots: { index: false, follow: true } };
+export const metadata: Metadata = {
+  title: "Impressum",
+  alternates: { canonical: "/impressum" },
+  robots: { index: false, follow: isIndexableDeployment },
+};
 export default async function ImprintPage() {
   const page = await getPageContent("impressum");
   const sections = page?.sections?.length ? page.sections : [

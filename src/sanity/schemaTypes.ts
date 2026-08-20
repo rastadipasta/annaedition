@@ -7,7 +7,12 @@ const seo = defineType({
   fields: [
     defineField({ name: "title", type: "string", validation: (rule) => rule.max(60) }),
     defineField({ name: "description", type: "text", rows: 3, validation: (rule) => rule.max(160) }),
-    defineField({ name: "image", type: "image", options: { hotspot: true } }),
+    defineField({
+      name: "image",
+      type: "image",
+      options: { hotspot: true },
+      fields: [defineField({ name: "alt", title: "Opis slike (alt)", type: "string" })],
+    }),
   ],
 });
 
@@ -95,6 +100,22 @@ const editablePage = defineType({
     defineField({ name: "secondaryTitle", title: "Drugi naslov", type: "string" }),
     defineField({ name: "secondaryAccentTitle", title: "Istaknuti dio drugog naslova", type: "string" }),
     defineField({ name: "sections", title: "Tekstualne sekcije", type: "array", of: [defineArrayMember({ name: "textSection", title: "Sekcija", type: "object", fields: [defineField({ name: "heading", title: "Naslov", type: "string", validation: (rule) => rule.required() }), defineField({ name: "text", title: "Tekst", type: "text", rows: 6, validation: (rule) => rule.required() })] })] }),
+    defineField({
+      name: "faqs",
+      title: "Häufige Fragen (FAQ)",
+      type: "array",
+      of: [
+        defineArrayMember({
+          name: "faqItem",
+          title: "Frage und Antwort",
+          type: "object",
+          fields: [
+            defineField({ name: "question", title: "Frage", type: "string", validation: (rule) => rule.required() }),
+            defineField({ name: "answer", title: "Antwort", type: "text", rows: 4, validation: (rule) => rule.required() }),
+          ],
+        }),
+      ],
+    }),
     defineField({ name: "body", type: "array", of: [defineArrayMember({ type: "block" }), defineArrayMember({ type: "image", options: { hotspot: true } })] }),
     defineField({ name: "seo", type: "seo" }),
   ],
@@ -122,6 +143,21 @@ const designPackage = defineType({
     defineField({ name: "description", type: "text" }),
     defineField({ name: "features", type: "array", of: [defineArrayMember({ type: "string" })] }),
     defineField({ name: "price", type: "string" }),
+    defineField({ name: "priceValue", title: "Numerischer Preis", type: "number", validation: (rule) => rule.positive() }),
+    defineField({
+      name: "priceCurrency",
+      title: "Währung",
+      type: "string",
+      initialValue: "EUR",
+      options: { list: [{ title: "Euro (EUR)", value: "EUR" }] },
+    }),
+    defineField({
+      name: "priceUnit",
+      title: "Preiseinheit",
+      type: "string",
+      initialValue: "m²",
+      options: { list: [{ title: "pro m²", value: "m²" }, { title: "Festpreis", value: "Festpreis" }] },
+    }),
     defineField({ name: "order", type: "number" }),
   ],
 });

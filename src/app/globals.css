@@ -742,6 +742,27 @@ main { padding-top: 96px; }
 .honeypot { position: absolute; left: -10000px; opacity: 0; }
 
 .legal { max-width: 800px; }
+.faq-section { padding-top: 2rem; }
+.faq-list { border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  min-height: 92px;
+  padding: 1.25rem 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2.8rem);
+  line-height: 1.15;
+  cursor: pointer;
+  list-style: none;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary > span { color: var(--gold); font-family: var(--font-manrope), "Segoe UI", sans-serif; font-size: .72rem; letter-spacing: .14em; }
+.faq-item summary::after { content: "+"; font-family: var(--font-manrope), "Segoe UI", sans-serif; font-size: 1.8rem; font-weight: 300; }
+.faq-item[open] summary::after { content: "−"; }
+.faq-item > p { max-width: 72ch; margin: 0 0 2rem 4.5rem; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.75; }
 .legal h1 { font-size: clamp(4rem, 8vw, 7rem); margin: 1rem 0 3rem; }
 .legal h2 { font-family: var(--font-display), Georgia, serif; font-size: 2.2rem; margin-top: 3rem; }
 .legal-text { white-space: pre-line; line-height: 1.75; }
@@ -963,6 +984,8 @@ main { padding-top: 96px; }
   .form-actions button { width: 100%; }
   .service-card-title { font-size: 2.15rem; }
   .service-card-tags span { padding: .45rem .7rem; font-size: .7rem; }
+  .faq-item summary { grid-template-columns: 2rem minmax(0, 1fr) auto; gap: .65rem; min-height: 78px; font-size: 1.45rem; }
+  .faq-item > p { margin-left: 2.65rem; }
   .cookie-consent { left: 14px; right: 14px; bottom: 14px; width: auto; max-height: calc(100dvh - 28px); overflow-y: auto; padding: 1.1rem; border-radius: 24px 24px 10px 24px; }
   .cookie-consent h2 { font-size: 1.4rem; }
   .cookie-consent > p { font-size: .86rem; }

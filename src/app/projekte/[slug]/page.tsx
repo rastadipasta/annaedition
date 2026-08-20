@@ -5,7 +5,7 @@ import type { CSSProperties } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { JsonLd } from "@/components/json-ld";
 import { ProjectLightboxImage, ProjectLightboxProvider } from "@/components/project-lightbox";
-import { baseUrl } from "@/lib/content";
+import { absoluteUrl, professionalServiceSchema, projectBreadcrumbSchema, seoIds } from "@/lib/seo";
 import { getProject, getProjects } from "@/sanity/queries";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -13,7 +13,15 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateStaticParams() { return (await getProjects()).map((project) => ({ slug: project.slug })); }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params; const project = await getProject(slug); if (!project) return {};
-  return { title: project.title, description: project.excerpt, alternates: { canonical: `/projekte/${slug}` }, openGraph: { images: [project.cover.url] } };
+  const canonical = absoluteUrl(`/projekte/${slug}`);
+  const cover = absoluteUrl(project.cover.url);
+  return {
+    title: project.title,
+    description: project.excerpt,
+    alternates: { canonical },
+    openGraph: { type: "article", url: canonical, title: project.title, description: project.excerpt, images: [{ url: cover, alt: project.cover.alt }] },
+    twitter: { title: project.title, description: project.excerpt, images: [cover] },
+  };
 }
 
 export default async function ProjectPage({ params }: Props) {
@@ -23,7 +31,22 @@ export default async function ProjectPage({ params }: Props) {
   const galleryStyle = { "--gallery-distance": `${Math.max(project.gallery.length - 1, 1) * 52}vw` } as CSSProperties;
   return (
     <>
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "CreativeWork", name: project.title, description: project.description, image: lightboxImages.map((image) => image.url), creator: { "@type": "Organization", name: "ANNA ÉDITION" }, url: `${baseUrl}/projekte/${slug}` }} />
+      <JsonLd data={[
+        professionalServiceSchema(),
+        {
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "@id": `${absoluteUrl(`/projekte/${slug}`)}#project`,
+          name: project.title,
+          description: project.description,
+          image: lightboxImages.map((image) => absoluteUrl(image.url)),
+          creator: { "@id": seoIds.organization },
+          url: absoluteUrl(`/projekte/${slug}`),
+          locationCreated: { "@type": "Place", name: project.location },
+          dateCreated: String(project.year),
+        },
+        projectBreadcrumbSchema(project),
+      ]} />
       <ProjectLightboxProvider title={project.title} images={lightboxImages}>
         <article className="container project-detail-hero">
           <Link className="button-link" href="/projekte" data-motion="load"><ArrowLeft size={16} /> Alle Projekte</Link>

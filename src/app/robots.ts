@@ -1,3 +1,14 @@
 import type { MetadataRoute } from "next";
-import { baseUrl } from "@/lib/content";
-export default function robots(): MetadataRoute.Robots { return { rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/studio/"] }, sitemap: `${baseUrl}/sitemap.xml` }; }
+import { absoluteUrl, isIndexableDeployment, siteUrl } from "@/lib/seo";
+
+export default function robots(): MetadataRoute.Robots {
+  if (!isIndexableDeployment) {
+    return { rules: { userAgent: "*", disallow: "/" } };
+  }
+
+  return {
+    rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/studio/"] },
+    sitemap: absoluteUrl("/sitemap.xml"),
+    host: siteUrl,
+  };
+}

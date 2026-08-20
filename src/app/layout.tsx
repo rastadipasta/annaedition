@@ -8,18 +8,34 @@ import { SiteHeader } from "@/components/site-header";
 import { MotionController } from "@/components/motion-controller";
 import { SiteLoader } from "@/components/site-loader";
 import { PageCurtainProvider } from "@/components/page-curtain";
-import { baseUrl } from "@/lib/content";
 import { display, manrope, navbarScript } from "@/lib/fonts";
+import { absoluteUrl, isIndexableDeployment, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
-  title: { default: "ANNA ÉDITION | Interior Design", template: "%s | ANNA ÉDITION" },
+  metadataBase: new URL(siteUrl),
+  title: { default: "Interior Design am Niederrhein & online | ANNA ÉDITION", template: "%s | ANNA ÉDITION" },
   description: "Zeitlose Interior-Konzepte, 3D-Visualisierungen und persönliche Einrichtungsberatung am Niederrhein und online.",
   icons: { icon: [{ url: "/brand/monogram.svg", type: "image/svg+xml" }], shortcut: "/brand/monogram.svg" },
   alternates: { canonical: "/" },
-  openGraph: { type: "website", locale: "de_DE", siteName: "ANNA ÉDITION", title: "ANNA ÉDITION | Interior Design", description: "Curated. Timeless. Unique. Interior Design für Räume mit Persönlichkeit.", images: ["/images/moodboard.jpg"] },
-  twitter: { card: "summary_large_image" },
+  robots: isIndexableDeployment
+    ? { index: true, follow: true }
+    : { index: false, follow: false, noarchive: true, nosnippet: true },
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    siteName: "ANNA ÉDITION",
+    url: siteUrl,
+    title: "Interior Design am Niederrhein & online | ANNA ÉDITION",
+    description: "Curated. Timeless. Unique. Interior Design für Räume mit Persönlichkeit.",
+    images: [{ url: absoluteUrl("/images/moodboard.jpg"), alt: "ANNA ÉDITION Interior Design" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Interior Design am Niederrhein & online | ANNA ÉDITION",
+    description: "Curated. Timeless. Unique. Interior Design für Räume mit Persönlichkeit.",
+    images: [absoluteUrl("/images/moodboard.jpg")],
+  },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#ffffff" };

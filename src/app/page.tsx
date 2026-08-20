@@ -2,17 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { JsonLd } from "@/components/json-ld";
-import { baseUrl } from "@/lib/content";
+import { personSchema, professionalServiceSchema, websiteSchema } from "@/lib/seo";
 import { getHomeContent, getPackages, getProjects } from "@/sanity/queries";
 
 export default async function HomePage() {
   const [projects, packages, cms] = await Promise.all([getProjects(), getPackages(), getHomeContent()]);
   const featured = projects.find((project) => project.featured) || projects[0];
   const heroLines = [cms?.heroLine1 || "Thoughtful", cms?.heroLine2 || "Design.", cms?.heroLine3 || "Timeless", cms?.heroLine4 || "Interiors."];
-  const structuredData = [
-    { "@context": "https://schema.org", "@type": "ProfessionalService", name: "ANNA ÉDITION", url: baseUrl, email: "studio@annaedition.de", areaServed: ["Niederrhein", "Duisburg", "Deutschland"], serviceType: ["Interior Design", "Online Einrichtungsberatung", "3D-Visualisierung"] },
-    { "@context": "https://schema.org", "@type": "Person", name: "Anna", jobTitle: "Interior Designerin", worksFor: { "@type": "Organization", name: "ANNA ÉDITION" } },
-  ];
+  const structuredData = [websiteSchema(), professionalServiceSchema(), personSchema()];
 
   return (
     <div className="home-page">

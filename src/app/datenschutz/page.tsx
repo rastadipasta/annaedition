@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
+import { isIndexableDeployment } from "@/lib/seo";
 import { getPageContent } from "@/sanity/queries";
 
-export const metadata: Metadata = { title: "Datenschutz", robots: { index: false, follow: true } };
+export const metadata: Metadata = {
+  title: "Datenschutz",
+  alternates: { canonical: "/datenschutz" },
+  robots: { index: false, follow: isIndexableDeployment },
+};
 export default async function PrivacyPage() {
   const page = await getPageContent("datenschutz");
   const sections = page?.sections?.length ? page.sections : [
