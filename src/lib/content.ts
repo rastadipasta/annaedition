@@ -48,7 +48,6 @@ export const fallbackProjects: Project[] = [
       { heading: "Vibe", text: "Ausdrucksstark, hotelartig und voller internationalem Charakter." },
     ],
     order: 1,
-    featured: true,
   },
   {
     slug: "concrete-calm",
@@ -68,6 +67,7 @@ export const fallbackProjects: Project[] = [
       { heading: "Vibe", text: "Clean und großzügig." },
     ],
     order: 2,
+    featured: true,
   },
   {
     slug: "midnight-cocoon",
@@ -118,7 +118,7 @@ export const fallbackProjects: Project[] = [
     description: "Ein ganzheitliches Apartment-Konzept, in dem jede Zone ihre eigene Identität besitzt und dennoch Teil einer konsequenten, warmen Materialwelt bleibt.",
     materials: ["Burgundy-Marmor", "Olivgrün", "Holzlamellen", "Maßgefertigte Fronten", "Warme Lichtachsen"],
     cover: projectImage("burgundy-residence", "cover.jpg", "Burgundy Residence – Visualisierung eines Badezimmers mit weinrotem Marmor und dunklem Holz"),
-    gallery: projectGallery("burgundy-residence", "Burgundy Residence", 16, "ganzheitliches Düsseldorfer Apartment"),
+    gallery: projectGallery("burgundy-residence", "Burgundy Residence", 19, "ganzheitliches Düsseldorfer Apartment"),
     storySections: [
       { heading: "Die Vision", text: "Ein ganzheitliches, großzügiges Apartment-Konzept voller Wärme, Struktur und wohnlichem Luxus." },
       { heading: "Das Highlight", text: "Die konsequente und mutige Kombination aus tiefem, mattem Weinrot (Burgundy) und edlem Olivgrün, die sich wie ein harmonischer roter Faden durch alle Räume zieht." },
