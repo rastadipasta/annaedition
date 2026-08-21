@@ -707,6 +707,7 @@ main { padding-top: 96px; }
 .about-portrait img.about-portrait-image,
 .image-frame img.about-portrait-image { object-fit: contain; background: #181818; }
 .about-portrait-image { transform: scaleX(-1); }
+.about-page-portrait-image { transform: none; }
 .about-copy h1 { max-width: 7ch; font-size: clamp(3.8rem, 6.6vw, 6.75rem); margin: 1rem 0 3rem; }
 .about-copy h2 { font-size: clamp(2.6rem, 5vw, 5rem); margin: 5rem 0 2rem; }
 .quote { margin: 3rem 0; padding: 2rem 0 2rem 2rem; border-left: 1px solid var(--line); font-family: var(--font-display), Georgia, serif; font-size: clamp(1.8rem, 3vw, 3rem); line-height: 1.15; }

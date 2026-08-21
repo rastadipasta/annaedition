@@ -54,8 +54,8 @@ describe("project content", () => {
     });
   });
 
-  it("features Emerald Skyline and exposes the new complete-concept filter", () => {
-    expect(fallbackProjects.filter((project) => project.featured).map((project) => project.slug)).toEqual(["emerald-skyline"]);
+  it("features Concrete Calm and exposes the new complete-concept filter", () => {
+    expect(fallbackProjects.filter((project) => project.featured).map((project) => project.slug)).toEqual(["concrete-calm"]);
     expect(categories).toContain("Gesamtkonzepte");
   });
 });
