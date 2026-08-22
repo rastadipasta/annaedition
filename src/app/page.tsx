@@ -45,7 +45,7 @@ export default async function HomePage() {
             <Link className="button-link" href="/leistungen">Wie wir zusammenarbeiten <ArrowRight size={16} /></Link>
           </div>
           <div className="philosophy-media" data-motion="reveal" data-motion-variant="image" data-motion-order="1" data-scroll-parallax>
-            <Image src={cms?.philosophyImage?.url || "/images/projects/emerald-skyline/02.jpg"} alt={cms?.philosophyImage?.alt || "Emerald Skyline – offener Essbereich mit Naturstein, dunklem Holz und olivgrünen Sitzmöbeln"} fill sizes="(max-width: 800px) 100vw, 50vw" />
+            <Image src={cms?.philosophyImage?.url || "/images/projects/burgundy-residence/04.jpg"} alt={cms?.philosophyImage?.alt || "Dunkler Wohnbereich mit burgunderrotem Naturstein, Kamin und grüner Sitzgruppe"} fill sizes="(max-width: 800px) 100vw, 50vw" />
           </div>
         </div>
       </section>
