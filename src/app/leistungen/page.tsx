@@ -61,7 +61,6 @@ export default async function ServicesPage() {
           ))}
         </div>
       </section>
-      <div className="services-footer-stroke" aria-hidden="true" />
     </>
   );
 }

@@ -691,13 +691,6 @@ main { padding-top: 96px; }
 @media (min-width: 1041px),
   (min-width: 801px) and (max-width: 1040px) and (orientation: landscape) and (min-height: 600px) {
   .services-detail-section { padding-bottom: 3rem; }
-  .services-footer-stroke {
-    width: calc(100vw - 80px);
-    height: 1px;
-    margin-inline: auto;
-    background: var(--line);
-    pointer-events: none;
-  }
 }
 .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(3rem, 8vw, 8rem); align-items: start; }
 .about-visual,
