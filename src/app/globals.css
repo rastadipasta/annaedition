@@ -562,7 +562,8 @@ main { padding-top: 96px; }
 .callout-card li { position: relative; padding: 1.1rem 0 1.1rem 3rem; border-bottom: 1px solid rgb(174 137 93 / 45%); }
 .callout-card li::before { counter-increment: item; content: "0" counter(item); position: absolute; left: 0; color: #ae895d; }
 
-.footer { position: sticky; bottom: 0; z-index: 0; border-top: 1px solid var(--line); border-radius: 42px 42px 0 0; padding: 4rem 0 2rem; background: var(--paper); }
+.footer { position: sticky; bottom: 0; z-index: 0; padding: 4rem 0 2rem; background: var(--paper); }
+.footer::before { content: ""; position: absolute; top: 0; left: 50%; width: min(1180px, calc(100% - 40px)); height: 1px; background: var(--line); transform: translateX(-50%); pointer-events: none; }
 .footer-grid { display: grid; grid-template-columns: 1.2fr .8fr .8fr; gap: 2rem; }
 .footer-logo { width: min(260px, 100%); aspect-ratio: 890 / 424; background: url("/brand/logo-light.svg") left center / contain no-repeat; }
 [data-theme="dark"] .footer-logo { background-image: url("/brand/logo-dark.svg"); }
