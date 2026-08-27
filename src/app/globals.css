@@ -477,7 +477,7 @@ main { padding-top: 96px; }
   overflow: hidden;
   box-shadow: var(--shadow);
 }
-.hero-media img { object-fit: cover; }
+.hero-media img { object-fit: cover; object-position: 28% center; }
 .hero-actions { display: flex; gap: 2rem; margin-top: clamp(1.25rem, 3svh, 2rem); }
 .hero-cta-button {
   min-width: 145px;
