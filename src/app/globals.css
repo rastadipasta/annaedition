@@ -694,6 +694,7 @@ main { padding-top: 96px; }
   .services-detail-section { padding-bottom: 3rem; }
 }
 .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(3rem, 8vw, 8rem); align-items: start; }
+.about-page .about-visual > .eyebrow { margin: 0 0 1.5rem; }
 .about-visual,
 .motion-enabled .about-visual[data-motion-variant="image"] { position: sticky; top: 130px; }
 .about-portrait { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 56px 12px; border: 1px solid var(--line); background: var(--sand); }
