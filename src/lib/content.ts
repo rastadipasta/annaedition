@@ -215,4 +215,12 @@ export const serviceFaqs: FaqItem[] = [
     question: "Was ist Call a Designer?",
     answer: "Call a Designer ist eine fokussierte 90-minütige Online-Beratung für konkrete Einrichtungsfragen, eine professionelle Zweitmeinung oder schnelle gestalterische Klarheit. Der Festpreis beträgt 500 Euro inklusive Mehrwertsteuer.",
   },
+  {
+    question: "Berechnest du Fahrtkosten für die Vor-Ort-Termine?",
+    answer: "Nein, alle Preise sind All-Inclusive-Preise. Da mir eine transparente Partnerschaft auf Augenhöhe wichtig ist, sind sämtliche Reise- und Anfahrtskosten in den Paketpreisen bereits komplett enthalten. Es gibt bei Anna Édition keine versteckten Kosten oder nachträgliche Kilometer-Abrechnungen für dich.",
+  },
+  {
+    question: "Ich wohne im Großraum Frankfurt / Hanau – kann ich dich für ein Vor-Ort-Styling buchen?",
+    answer: "Ja, sehr gerne! Ich habe alle zwei Wochen feste Termine in Hessen. Mein Einzugsgebiet umfasst dabei Frankfurt am Main sowie alle Orte im Umkreis von 50 km (wie z. B. Hanau, Offenbach oder Bad Vilbel). Liegt dein Projekt in diesem Radius, profitierst du ohne Aufpreis von meinem All-Inclusive-Modell.",
+  },
 ];
