@@ -197,7 +197,7 @@ export const services = [
 export const serviceFaqs: FaqItem[] = [
   {
     question: "Wo bietet ANNA ÉDITION Interior Design an?",
-    answer: "ANNA ÉDITION hat seinen Sitz in Wesel und begleitet Interior-Design-Projekte am Niederrhein, unter anderem in Duisburg und Düsseldorf. Online-Einrichtungsberatungen sind deutschlandweit möglich.",
+    answer: "ANNA ÉDITION hat seinen Sitz in Wesel und begleitet Interior-Design-Projekte am Niederrhein, unter anderem in Duisburg und Düsseldorf, sowie im Großraum Frankfurt am Main (im Umkreis von 50 km). Online-Einrichtungsberatungen sind deutschlandweit möglich.",
   },
   {
     question: "Wie funktioniert eine Online-Einrichtungsberatung?",
