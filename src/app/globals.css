@@ -529,7 +529,7 @@ main { padding-top: 96px; }
 .image-frame img { object-fit: cover; transition: transform 800ms var(--ease); }
 .image-frame:hover img { transform: scale(1.025); }
 
-.packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.packages-grid { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .package { min-height: 520px; padding: 2.5rem; display: flex; flex-direction: column; border-right: 1px solid var(--line); }
 .package:last-child { border-right: 0; }
 .package > .eyebrow { margin: 0; }
@@ -1000,3 +1000,7 @@ main { padding-top: 96px; }
   .project-lightbox-close:hover, .project-lightbox-arrow:hover { transform: none !important; }
   .footer { position: relative; bottom: auto; }
 }
+
+.package-terms { margin: 1.5rem 0 3rem; color: var(--muted); line-height: 1.6; }
+.service-card-copy .service-card-price { margin-top: 1rem; font-weight: 600; }
+.service-card-title { overflow-wrap: anywhere; }

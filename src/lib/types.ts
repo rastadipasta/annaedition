@@ -48,6 +48,7 @@ export interface DesignPackage {
 export interface ServiceItem {
   title: string;
   text: string;
+  price?: string;
 }
 
 export interface CmsImage {

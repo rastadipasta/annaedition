@@ -32,10 +32,11 @@ const pageQuery = `*[_type == "page" && slug.current == $slug][0] {
   "faqs": coalesce(faqs[]{question, answer}, [])
 }`;
 
-const packagesQuery = `*[_type == "designPackage"] | order(order asc) {
+const packagesQuery = `*[_type == "designPackage" && name == "Édition Unique" && "Das Édition Reveal" in features] | order(order asc) {
   name, eyebrow, description, features, price, priceValue, priceCurrency, priceUnit
 }`;
-const servicesQuery = `*[_type == "service"] | order(order asc) {title, "text": description}`;
+// Ignore the retired catalog until the updated services and prices are published in Sanity.
+const servicesQuery = `*[_type == "service" && title in $titles && defined(price)] | order(order asc) {title, "text": description, price}`;
 
 export const getProjects = cache(async (): Promise<Project[]> => {
   if (!sanityClient) return fallbackProjects;
@@ -73,7 +74,7 @@ export const getPackages = cache(async (): Promise<DesignPackage[]> => {
 export const getServices = cache(async (): Promise<ServiceItem[]> => {
   if (!sanityClient) return services;
   try {
-    const entries = await sanityClient.fetch<ServiceItem[]>(servicesQuery, {}, { next: { revalidate: 60 } });
-    return entries.length ? entries : services;
+    const entries = await sanityClient.fetch<ServiceItem[]>(servicesQuery, { titles: services.map((service) => service.title) }, { next: { revalidate: 60 } });
+    return services.map((service) => entries.find((entry) => entry.title === service.title) || service);
   } catch { return services; }
 });

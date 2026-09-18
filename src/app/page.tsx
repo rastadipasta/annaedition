@@ -1,3 +1,4 @@
+import { packageTerms } from "@/lib/content";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -73,7 +74,7 @@ export default async function HomePage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container">
           <header className="section-heading" data-motion="reveal">
-            <p className="eyebrow">{cms?.packagesEyebrow || "Design-Pakete"}</p>
+            <p className="eyebrow">{cms?.packagesEyebrow || "Design-Paket"}</p>
             <h2 className="display motion-title">{cms?.packagesTitle || "Planung, die"} <span className="accent">{cms?.packagesAccent || "zu dir passt."}</span></h2>
           </header>
           <div className="packages-grid">
@@ -84,6 +85,7 @@ export default async function HomePage() {
               </article>
             ))}
           </div>
+          <p className="package-terms" data-motion="reveal">{packageTerms}</p>
           <div style={{ marginTop: "2rem" }} data-motion="reveal"><Link className="button-link" href="/leistungen">Alle Leistungen <ArrowRight size={16} /></Link></div>
         </div>
       </section>
@@ -93,8 +95,8 @@ export default async function HomePage() {
           <div className="callout-copy" data-motion="reveal">
             <p className="eyebrow" style={{ color: "#ae895d" }}>{cms?.calloutEyebrow || "Schnelle Hilfe vom Profi"}</p>
             <h2 className="display motion-title">{cms?.calloutTitle || "Call a"}<br /><span style={{ color: "#ae895d" }}>{cms?.calloutAccent || "Designer."}</span></h2>
-            <p className="lede" style={{ color: "#f1e7e3" }}>{cms?.calloutIntro || "Die unkomplizierte 1:1 Online-Beratung für schnelle Klarheit, eine professionelle Zweitmeinung und konkrete Ideen."}</p>
-            <p className="display callout-price">{cms?.calloutPrice || "500 € Festpreis · 90 Minuten"}</p>
+            <p className="lede" style={{ color: "#f1e7e3" }}>{cms?.calloutIntro || "90 Minuten persönliche Online-Beratung + Einkaufsguide"}</p>
+            <p className="display callout-price">{cms?.calloutPrice || "500 € inkl. MwSt. · 90 Minuten"}</p>
             <Link className="button-link" style={{ color: "#ae895d" }} href="/kontakt?anfrage=call">Beratung anfragen <ArrowRight size={16} /></Link>
           </div>
           <div className="callout-card" data-motion="reveal" data-motion-order="1">

@@ -150,32 +150,14 @@ export const fallbackProjects: Project[] = [
   },
 ];
 
+export const packageTerms = "Bis zu zwei Korrekturschleifen inklusive. Alle Preise sind Endpreise inkl. MwSt.";
+
 export const packages = [
-  {
-    name: "Édition Essentielle",
-    eyebrow: "Atmosphäre & Stil",
-    description: "Der perfekte Einstieg für eine klare gestalterische Richtung.",
-    features: ["Moodboard & Farbkonzept", "Material- & Oberflächenberatung", "Farb- & Materialkarte (für Wände & Oberflächen)"],
-    price: "49 € / m²",
-    priceValue: 49,
-    priceCurrency: "EUR",
-    priceUnit: "m²",
-  },
-  {
-    name: "Édition Élégance",
-    eyebrow: "Struktur & Aufteilung",
-    description: "Für Räume, die im Alltag intuitiv und selbstverständlich funktionieren.",
-    features: ["Strukturierte 2D-Raumplanung", "Konkrete Produktempfehlungen", "Abgestimmtes Einrichtungskonzept"],
-    price: "69 € / m²",
-    priceValue: 69,
-    priceCurrency: "EUR",
-    priceUnit: "m²",
-  },
   {
     name: "Édition Unique",
     eyebrow: "Das Gesamtkonzept",
     description: "Das Rundum-sorglos-Paket für dein neues Zuhause.",
-    features: ["Möblierungskonzept", "Realistische 3D-Visualisierung", "Detaillierte Möbel-Shoppingliste (mit Direktlinks)", "Einkauf & Finales Styling (Persönlich vor Ort)"],
+    features: ["2D-Planung", "Produktempfehlungen", "3D-Visualisierung", "Das Édition Reveal"],
     price: "129 € / m²",
     priceValue: 129,
     priceCurrency: "EUR",
@@ -184,36 +166,62 @@ export const packages = [
 ];
 
 export const services = [
-  { title: "Raum- & Grundkonzepte", text: "Ein Raum funktioniert nur dann richtig, wenn die Aufteilung stimmt. Wir schauen uns deinen vorhandenen Grundriss genau an und entwickeln Lösungen, die perfekt zu deinem Alltag passen. Dabei verbessern wir die Proportionen und holen das Beste aus jedem Quadratmeter heraus. Denn für uns bedeutet Planung nicht, einfach nur Möbel in ein Zimmer zu stellen – sondern den Raum so zu gestalten, dass du dich darin rundum wohlfühlen kannst." },
-  { title: "Farb- & Materialkarte", text: "Zu jedem Basiskonzept erstellen wir für dich eine übersichtliche Farb- und Materialkarte für deine Wandgestaltung und Oberflächen. Du bekommst konkrete Farbnummern, Tapetenempfehlungen und nützliche Materialhinweise genannt, damit die Basis deines Raumes perfekt abgestimmt ist. (Möbel-Produktempfehlungen sind in dieser Karte nicht enthalten)." },
-  { title: "Material- & Oberflächenberatung", text: "Materialien machen einen Raum erst lebendig – das geht weit über das Aussehen hinaus. Aus Naturstein, Holz, gemütlichen Stoffen und den passenden Farben entsteht eine Wohnwelt, die Ruhe und Gemütlichkeit ausstrahlt. Bei jeder Auswahl achten wir darauf, dass das Material praktisch ist, sich gut anfühlt und lange hält." },
-  { title: "Möblierungskonzepte", text: "Damit dein Zuhause perfekt zu deinem Alltag passt, planen wir die Aufteilung deiner Möbel von Grund auf durch. Wir achten darauf, dass Laufwege frei bleiben, genügend Stauraum vorhanden ist und alle Möbelstücke optisch harmonieren. Du erhältst von uns ein klares Konzept, das dir genau zeigt, wie du deine Räume am besten einrichten und nutzen kannst." },
-  { title: "3D-Visualisierungen", text: "Durch realistische 3D-Bilder siehst du schon vor dem Umbau ganz genau, wie dein neuer Raum später aussehen wird. Das gibt dir absolute Sicherheit bei deinen Entscheidungen, weil du das fertige Ergebnis schon vorab virtuell erleben kannst." },
-  { title: "Detaillierte Möbel-Shoppingliste", text: "Ideen werden zu realen Möbeln. Du erhältst eine vollständige, maßgeschneiderte Produktliste für alle Einrichtungsgegenstände deines Raumes (Sofa, Tische, Leuchten, Teppiche etc.). Wir nennen dir exakte Maße, Preise und packen die direkten Online-Links zu den Händlern dazu. So kannst du alles stressfrei, stilsicher und ohne langes Suchen nachkaufen." },
-  { title: "Einkauf & Finales Styling (Vor Ort)", text: "Der krönende Abschluss deines Projekts direkt bei dir vor Ort. Wenn deine Möbel geliefert und aufgebaut sind, komme ich persönlich in deine Wohnung. Wir gehen auf Wunsch gemeinsam Accessoires einkaufen und ich setze Kissen, Leuchten, Pflanzen und Dekoration mit dem passenden Blick für Details in deinen fertigen Räumen in Szene. Für dich entstehen so wunderschöne Wohnwelten mit echtem Wohlfühlcharakter." },
-  { title: "Maßanfertigungen & Sonderlösungen", text: "Wir finden für jede Raumsituation die passende Lösung. Wenn Standardmöbel an ihre Grenzen stoßen, entwerfen wir maßgeschneiderte Sonderlösungen – vom perfekt eingepassten Einbauschrank bis hin zu individuellen Raumteilern. Wir übernehmen die detailgetreue Planung und arbeiten eng mit erfahrenen Handwerkern zusammen, damit am Ende alles millimetergenau passt und höchsten Komfort in deinen Alltag bringt." },
+  {
+    title: "Accessoire-Einkauf (Full-Service)",
+    text: "Wir übernehmen die gesamte Auswahl und Bestellung dekorativer Details wie Vasen, Bücher oder Kissen.",
+    price: "Artikelpreis + 20% Servicepauschale",
+  },
+  {
+    title: "Express-Service (72h-Konzept-Entwurf)",
+    text: "Für eilige Projekte: Priorisierte Bearbeitung mit schneller Konzeptlieferung – je nach Verfügbarkeit.",
+    price: "+20%",
+  },
+  {
+    title: "Zusätzliche Visualisierung / Überarbeitung",
+    text: "Enthält eine weitere 3D-Visualisierung oder konzeptionelle Anpassung nach der zweiten Korrekturschleife. Ideal bei Änderungswünschen, die über das vereinbarte Maß hinausgehen.",
+    price: "49€/QM",
+  },
+  {
+    title: "Shopping-Service & Produktbestellung",
+    text: "Wir übernehmen die komplette Abwicklung deiner Bestellungen – von der Recherche bis zur Bestellung inklusive Rücksprachen mit Lieferanten.",
+    price: "Artikelpreis + 20% Servicepauschale",
+  },
+  {
+    title: "Projektkoordination & Handwerkersteuerung",
+    text: "Organisation und Kommunikation mit allen Gewerken. Bauleitung light für einen reibungslosen Ablauf vor Ort.",
+    price: "245 €/Stunde",
+  },
+  {
+    title: "Nachhaltiges Design (Eco friendly Konzept)",
+    text: "Materialien und Produkte aus nachhaltiger Produktion, ganzheitlich gedacht für ein bewusstes Zuhause.",
+    price: "258 €/QM",
+  },
 ];
 
 export const serviceFaqs: FaqItem[] = [
+  {
+    question: "Bietet ihr auch technische Zeichnungen an?",
+    answer: "Aktuell nicht. Ich arbeite noch ohne festen Architekten und möchte diese Verantwortung nicht ohne Fachpartner übernehmen. Sobald ich mit einem Architekten zusammenarbeite, wird das Teil des Angebots.",
+  },
   {
     question: "Wo bietet ANNA ÉDITION Interior Design an?",
     answer: "ANNA ÉDITION hat seinen Sitz in Wesel und begleitet Interior-Design-Projekte am Niederrhein, unter anderem in Duisburg und Düsseldorf, sowie im Großraum Frankfurt am Main (im Umkreis von 50 km). Online-Einrichtungsberatungen sind deutschlandweit möglich.",
   },
   {
     question: "Wie funktioniert eine Online-Einrichtungsberatung?",
-    answer: "Nach deiner Anfrage besprechen wir Raum, Wünsche und Budget. Auf Basis deiner Unterlagen erhältst du eine klare gestalterische Richtung, konkrete Empfehlungen und – je nach Paket – Planung, Visualisierungen oder eine Shoppingliste.",
+    answer: "Nach deiner Anfrage besprechen wir Raum, Wünsche und Budget. Auf Basis deiner Unterlagen erhältst du eine klare gestalterische Richtung, konkrete Empfehlungen und mit Édition Unique eine 2D-Planung, Produktempfehlungen, eine 3D-Visualisierung und das Édition Reveal.",
   },
   {
     question: "Was ist in einer 3D-Visualisierung enthalten?",
-    answer: "Die realistische 3D-Visualisierung zeigt die geplante Raumwirkung, Möblierung, Materialien, Farben und Beleuchtung vor der Umsetzung. Der genaue Umfang richtet sich nach dem gewählten Paket und deinem Projekt.",
+    answer: "Die realistische 3D-Visualisierung zeigt die geplante Raumwirkung, Möblierung, Materialien, Farben und Beleuchtung vor der Umsetzung. Der genaue Umfang richtet sich nach deinem Projekt.",
   },
   {
     question: "Wie setzen sich die Preise zusammen?",
-    answer: "Die Design-Pakete werden nach Quadratmetern kalkuliert. Zusatzleistungen wie ein Beleuchtungskonzept oder eine detaillierte Möbel-Shoppingliste können optional ergänzt werden. Vor Projektstart erhältst du eine transparente Zusammenfassung der Leistungen und Kosten.",
+    answer: "Édition Unique kostet 129 €/m² und beinhaltet bis zu zwei Korrekturschleifen. Zusatzleistungen können optional ergänzt werden. Alle Preise sind Endpreise inklusive Mehrwertsteuer. Vor Projektstart erhältst du eine transparente Zusammenfassung der Leistungen und Kosten.",
   },
   {
     question: "Was ist Call a Designer?",
-    answer: "Call a Designer ist eine fokussierte 90-minütige Online-Beratung für konkrete Einrichtungsfragen, eine professionelle Zweitmeinung oder schnelle gestalterische Klarheit. Der Festpreis beträgt 500 Euro inklusive Mehrwertsteuer.",
+    answer: "Call a Designer ist eine fokussierte 90-minütige Online-Beratung für konkrete Einrichtungsfragen, eine professionelle Zweitmeinung oder schnelle gestalterische Klarheit. Ein Einkaufsguide ist enthalten. Der Festpreis beträgt 500 Euro inklusive Mehrwertsteuer.",
   },
   {
     question: "Berechnest du Fahrtkosten für die Vor-Ort-Termine?",

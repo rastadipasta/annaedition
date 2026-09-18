@@ -6,17 +6,6 @@ import { useState } from "react";
 import { services as fallbackServices } from "@/lib/content";
 import type { ServiceItem } from "@/lib/types";
 
-const serviceTags = [
-  ["Grundrissanalyse", "Raumfluss", "Proportionen"],
-  ["Wandfarben", "Tapeten", "Oberflächen"],
-  ["Naturstein", "Holz", "Oberflächen", "Haptik"],
-  ["Möblierung", "Laufwege", "Stauraum"],
-  ["Fotorealistisch", "Entscheidungssicherheit", "Vorher erleben"],
-  ["Möbel", "Maße", "Direktlinks"],
-  ["Vor Ort", "Accessoires", "Finales Styling"],
-  ["Einbauten", "Raumteiler", "Handwerk"],
-];
-
 export function ServicesAccordion({ services = fallbackServices }: { services?: ServiceItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -44,10 +33,7 @@ export function ServicesAccordion({ services = fallbackServices }: { services?: 
             <h3 className="service-card-title">{service.title}</h3>
             <div className="service-card-panel" id={panelId} data-open={isOpen}>
               <div className="service-card-panel-inner">
-                <div className="service-card-tags" aria-label="Leistungsbereiche">
-                  {serviceTags[index % serviceTags.length].map((tag) => <span key={tag}>{tag}</span>)}
-                </div>
-                <div className="service-card-copy"><Asterisk size={28} strokeWidth={1.25} aria-hidden="true" /><p>{service.text}</p></div>
+                <div className="service-card-copy"><Asterisk size={28} strokeWidth={1.25} aria-hidden="true" /><div><p>{service.text}</p>{service.price && <p className="service-card-price">Preis: {service.price}</p>}</div></div>
               </div>
             </div>
           </article>

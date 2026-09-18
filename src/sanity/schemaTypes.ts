@@ -128,6 +128,7 @@ const service = defineType({
   fields: [
     defineField({ name: "title", type: "string", validation: (rule) => rule.required() }),
     defineField({ name: "description", type: "text", rows: 5 }),
+    defineField({ name: "price", title: "Preis", type: "string" }),
     defineField({ name: "order", type: "number" }),
   ],
   orderings: [{ title: "Reihenfolge", name: "orderAsc", by: [{ field: "order", direction: "asc" }] }],
