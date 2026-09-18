@@ -228,7 +228,7 @@ export const serviceFaqs: FaqItem[] = [
     answer: "Nein, alle Preise sind All-Inclusive-Preise. Da mir eine transparente Partnerschaft auf Augenhöhe wichtig ist, sind sämtliche Reise- und Anfahrtskosten in den Paketpreisen bereits komplett enthalten. Es gibt bei Anna Édition keine versteckten Kosten oder nachträgliche Kilometer-Abrechnungen für dich.",
   },
   {
-    question: "Ich wohne im Großraum Frankfurt / Hanau – kann ich dich für ein Vor-Ort-Styling buchen?",
+    question: "Ich wohne im Großraum Frankfurt / Hanau – kann ich dich für ein Vor-Ort-Termine buchen?",
     answer: "Ja, sehr gerne! Ich habe alle zwei Wochen feste Termine in Hessen. Mein Einzugsgebiet umfasst dabei Frankfurt am Main sowie alle Orte im Umkreis von 50 km (wie z. B. Hanau, Offenbach oder Bad Vilbel). Liegt dein Projekt in diesem Radius, profitierst du ohne Aufpreis von meinem All-Inclusive-Modell.",
   },
 ];
