@@ -150,7 +150,7 @@ export const fallbackProjects: Project[] = [
   },
 ];
 
-export const packageTerms = "Bis zu zwei Korrekturschleifen inklusive. Alle Preise sind Endpreise inkl. MwSt.";
+export const packageTerms = "Bis zu zwei Korrekturschleifen inklusive. Alle Preise sind Endpreise. Gemäß § 19 Abs. 1 UStG wird keine Umsatzsteuer berechnet.";
 
 export const packages = [
   {
@@ -217,11 +217,11 @@ export const serviceFaqs: FaqItem[] = [
   },
   {
     question: "Wie setzen sich die Preise zusammen?",
-    answer: "Édition Unique kostet 129 €/m² und beinhaltet bis zu zwei Korrekturschleifen. Zusatzleistungen können optional ergänzt werden. Alle Preise sind Endpreise inklusive Mehrwertsteuer. Vor Projektstart erhältst du eine transparente Zusammenfassung der Leistungen und Kosten.",
+    answer: "Édition Unique kostet 129 €/m² und beinhaltet bis zu zwei Korrekturschleifen. Zusatzleistungen können optional ergänzt werden. Alle Preise sind Endpreise. Gemäß § 19 Abs. 1 UStG wird keine Umsatzsteuer berechnet. Vor Projektstart erhältst du eine transparente Zusammenfassung der Leistungen und Kosten.",
   },
   {
     question: "Was ist Call a Designer?",
-    answer: "Call a Designer ist eine fokussierte 90-minütige Online-Beratung für konkrete Einrichtungsfragen, eine professionelle Zweitmeinung oder schnelle gestalterische Klarheit. Ein Einkaufsguide ist enthalten. Der Festpreis beträgt 500 Euro inklusive Mehrwertsteuer.",
+    answer: "Call a Designer ist eine fokussierte 90-minütige Online-Beratung für konkrete Einrichtungsfragen, eine professionelle Zweitmeinung oder schnelle gestalterische Klarheit. Ein Einkaufsguide ist enthalten. Der Festpreis beträgt 500 Euro.",
   },
   {
     question: "Berechnest du Fahrtkosten für die Vor-Ort-Termine?",

@@ -96,7 +96,7 @@ export default async function HomePage() {
             <p className="eyebrow" style={{ color: "#ae895d" }}>{cms?.calloutEyebrow || "Schnelle Hilfe vom Profi"}</p>
             <h2 className="display motion-title">{cms?.calloutTitle || "Call a"}<br /><span style={{ color: "#ae895d" }}>{cms?.calloutAccent || "Designer."}</span></h2>
             <p className="lede" style={{ color: "#f1e7e3" }}>{cms?.calloutIntro || "90 Minuten persönliche Online-Beratung + Einkaufsguide"}</p>
-            <p className="display callout-price">{cms?.calloutPrice || "500 € inkl. MwSt. · 90 Minuten"}</p>
+            <p className="display callout-price">{(cms?.calloutPrice || "500 € · 90 Minuten").replace(/\s*inkl(?:\.|usive)?\s*(?:MwSt\.?|Mehrwertsteuer)/gi, "")}</p>
             <Link className="button-link" style={{ color: "#ae895d" }} href="/kontakt?anfrage=call">Beratung anfragen <ArrowRight size={16} /></Link>
           </div>
           <div className="callout-card" data-motion="reveal" data-motion-order="1">
