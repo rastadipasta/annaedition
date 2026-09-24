@@ -18,12 +18,16 @@ export interface ProjectStorySection {
   text: string;
 }
 
+export type ProjectTag = Exclude<ProjectCategory, "Alle Projekte">;
+
 export interface Project {
   slug: string;
   title: string;
   location: string;
   year: number;
-  category: ProjectCategory;
+  category: ProjectTag;
+  categories?: ProjectTag[];
+  categoryCovers?: { category: ProjectTag; image: ProjectImage }[];
   excerpt: string;
   description: string;
   materials: string[];

@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { categories, fallbackProjects, packages, services } from "@/lib/content";
+import { existsSync } from "node:fs";
+import path from "node:path";
 
 describe("Leistungen content", () => {
   it("publishes only the current package and its deliverables", () => {
@@ -18,8 +20,8 @@ describe("Leistungen content", () => {
 });
 
 describe("project content", () => {
-  it("publishes the six supplied projects in their editorial order", () => {
-    expect(fallbackProjects.map((project) => project.slug)).toEqual([
+  it("preserves the six existing projects and adds exactly twelve unique projects", () => {
+    expect(fallbackProjects.slice(0, 6).map((project) => project.slug)).toEqual([
       "emerald-skyline",
       "concrete-calm",
       "midnight-cocoon",
@@ -27,15 +29,24 @@ describe("project content", () => {
       "burgundy-residence",
       "parisian-dream",
     ]);
-    expect(fallbackProjects.map((project) => project.order)).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(fallbackProjects).toHaveLength(18);
+    expect(new Set(fallbackProjects.map((project) => project.slug)).size).toBe(18);
+    expect(fallbackProjects.map((project) => project.order)).toEqual(Array.from({ length: 18 }, (_, i) => i + 1));
   });
 
   it("uses a distinct cover, ordered gallery and complete project story", () => {
     fallbackProjects.forEach((project) => {
-      expect(project.cover.url).toContain(`/images/projects/${project.slug}/cover.jpg`);
       expect(project.gallery.length).toBeGreaterThan(0);
       expect(project.gallery[0].url).toContain(`/images/projects/${project.slug}/01.jpg`);
       expect(project.storySections.length).toBeGreaterThan(0);
+      const images = [project.cover, ...project.gallery];
+      expect(new Set(images.map((image) => image.url)).size).toBe(images.length);
+      [...images, ...(project.categoryCovers || []).map((entry) => entry.image)].forEach((image) => {
+        expect(existsSync(path.join(process.cwd(), "public", image.url)), image.url).toBe(true);
+      });
+    });
+    fallbackProjects.slice(6).forEach((project) => {
+      expect(project.storySections.map((section) => section.heading)).toEqual(["Die Vision", "Das Highlight", "Der Kontrast", "Die Raumstruktur", "Vibe"]);
     });
   });
 

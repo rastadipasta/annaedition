@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/json-ld";
 import { ProjectLightboxImage, ProjectLightboxProvider } from "@/components/project-lightbox";
 import { absoluteUrl, professionalServiceSchema, projectBreadcrumbSchema, seoIds } from "@/lib/seo";
 import { getProject, getProjects } from "@/sanity/queries";
+import { getProjectCategories } from "@/lib/project-categories";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -50,7 +51,7 @@ export default async function ProjectPage({ params }: Props) {
       <ProjectLightboxProvider title={project.title} images={lightboxImages}>
         <article className="container project-detail-hero">
           <Link className="button-link" href="/projekte" data-motion="load"><ArrowLeft size={16} /> Alle Projekte</Link>
-          <header className="project-detail-head"><div><p className="eyebrow" data-motion="load" data-motion-order="1">{project.category}</p><h1 className="display" data-motion="load" data-motion-order="2">{project.title}</h1></div><p className="eyebrow" data-motion="load" data-motion-order="2">{project.location}, {project.year}</p></header>
+          <header className="project-detail-head"><div><p className="eyebrow" data-motion="load" data-motion-order="1">{getProjectCategories(project).join(" · ")}</p><h1 className="display" data-motion="load" data-motion-order="2">{project.title}</h1></div><p className="eyebrow" data-motion="load" data-motion-order="2">{project.location}, {project.year}</p></header>
           <ProjectLightboxImage image={project.cover} index={0} className="project-hero-image" sizes="100vw" priority motion="load" motionOrder="3" />
           <div className="project-story"><div data-motion="reveal"><p className="eyebrow">Materialwelt</p><ul className="material-list">{project.materials.map((material) => <li key={material}>{material}</li>)}</ul></div><div data-motion="reveal" data-motion-order="1"><h2 className="display motion-title" style={{ fontSize: "clamp(3rem, 6vw, 6rem)", marginTop: 0 }}>Ein Raum mit <span className="accent">eigener Geschichte.</span></h2><p className="lede">{project.description}</p></div></div>
           <div className="project-story-sections">

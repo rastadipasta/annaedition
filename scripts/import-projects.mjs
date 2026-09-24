@@ -6,20 +6,23 @@ import { fallbackProjects } from "../src/lib/content.ts";
 const apiVersion = "2026-08-19";
 const apply = process.argv.includes("--apply");
 const client = getCliClient({ apiVersion });
-const legacySlugs = ["calm-light", "quiet-kitchen", "after-dark"];
 const incomingSlugs = fallbackProjects.map((project) => project.slug);
 
 const existing = await client.fetch(
-  `*[_type == "project" && slug.current in $slugs]{_id, title, "slug": slug.current}`,
-  { slugs: [...legacySlugs, ...incomingSlugs] },
+  `*[_type == "project" && !(_id in path("drafts.**")) && slug.current in $slugs]{_id, title, "slug": slug.current}`,
+  { slugs: incomingSlugs },
 );
+
+if (new Set(existing.map((document) => document.slug)).size !== existing.length) {
+  throw new Error("Duplicate project slugs in Sanity. Resolve them before importing.");
+}
 
 console.log(`${apply ? "IMPORT" : "DRY RUN"}: ${fallbackProjects.length} projects`);
 console.table(fallbackProjects.map((project) => ({ order: project.order, slug: project.slug, title: project.title, images: project.gallery.length + 1 })));
-console.log("Documents to replace/remove:", existing.length ? existing : "none");
+console.log("Documents to update in place:", existing.length ? existing : "none");
 
 if (!apply) {
-  console.log("No changes made. Run `npm run cms:projects:import` to upload assets and replace the project documents.");
+  console.log("No changes made. Run `npm run cms:projects:import` to upload assets and upsert the project documents. Unrelated documents are preserved.");
   process.exit(0);
 }
 
@@ -29,16 +32,21 @@ const localPath = (url) => {
   return filePath;
 };
 
+const uploadedImages = new Map();
 const uploadImage = async (image, slug, label) => {
+  const cached = uploadedImages.get(image.url);
+  if (cached) return { ...cached, alt: image.alt };
   const filePath = localPath(image.url);
   const asset = await client.assets.upload("image", createReadStream(filePath), {
     filename: `${slug}-${label}.jpg`,
   });
-  return {
+  const uploaded = {
     _type: "image",
     asset: { _type: "reference", _ref: asset._id },
     alt: image.alt,
   };
+  uploadedImages.set(image.url, uploaded);
+  return uploaded;
 };
 
 const documents = [];
@@ -53,14 +61,26 @@ for (const project of fallbackProjects) {
     });
   }
 
+  const categoryCovers = [];
+  for (const [index, entry] of (project.categoryCovers || []).entries()) {
+    categoryCovers.push({
+      _key: `category-${index + 1}`,
+      _type: "categoryCover",
+      category: entry.category,
+      image: await uploadImage(entry.image, project.slug, `category-${index + 1}`),
+    });
+  }
+
   documents.push({
-    _id: `project-${project.slug}`,
+    _id: existing.find((document) => document.slug === project.slug)?._id || `project-${project.slug}`,
     _type: "project",
     title: project.title,
     slug: { _type: "slug", current: project.slug },
     location: project.location,
     year: project.year,
     category: project.category,
+    categories: project.categories || [project.category],
+    categoryCovers,
     excerpt: project.excerpt,
     description: project.description,
     materials: project.materials,
@@ -77,8 +97,11 @@ for (const project of fallbackProjects) {
 }
 
 const transaction = client.transaction();
-existing.forEach((document) => transaction.delete(document._id));
-documents.forEach((document) => transaction.createOrReplace(document));
+documents.forEach((document) => {
+  const { _id, _type, ...fields } = document;
+  transaction.createIfNotExists({ _id, _type });
+  transaction.patch(_id, (patch) => patch.set(fields));
+});
 await transaction.commit({ visibility: "sync" });
 
-console.log(`Imported ${documents.length} projects and removed ${existing.length} replaced/legacy project documents.`);
+console.log(`Imported ${documents.length} projects (${existing.length} updated in place). No documents deleted.`);

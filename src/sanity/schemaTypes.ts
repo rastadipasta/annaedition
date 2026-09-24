@@ -61,6 +61,8 @@ const homePage = defineType({
   preview: { prepare: () => ({ title: "Startseite" }) },
 });
 
+const projectCategories = ["Wohn- & Essbereiche", "Küchen", "Schlafzimmer", "Home Office", "Eingangsbereiche", "Bäder", "Gesamtkonzepte"];
+
 const project = defineType({
   name: "project",
   title: "Projekte",
@@ -70,7 +72,12 @@ const project = defineType({
     defineField({ name: "slug", type: "slug", options: { source: "title" }, validation: (rule) => rule.required() }),
     defineField({ name: "location", title: "Ort", type: "string" }),
     defineField({ name: "year", title: "Jahr", type: "number" }),
-    defineField({ name: "category", title: "Kategorie", type: "string", options: { list: ["Wohn- & Essbereiche", "Küchen", "Schlafzimmer", "Home Office", "Eingangsbereiche", "Bäder", "Gesamtkonzepte"] } }),
+    defineField({ name: "category", title: "Hauptkategorie", type: "string", options: { list: projectCategories } }),
+    defineField({ name: "categories", title: "Kategorien (Tags)", description: "Ein Projekt kann in mehreren Filtern erscheinen. Unter Alle Projekte erscheint es einmal.", type: "array", of: [defineArrayMember({ type: "string" })], options: { list: projectCategories }, validation: (rule) => rule.unique() }),
+    defineField({ name: "categoryCovers", title: "Titelbilder je Kategorie", description: "Ohne eigenes Kategoriebild wird das Hauptbild verwendet.", type: "array", of: [defineArrayMember({ name: "categoryCover", type: "object", fields: [
+      defineField({ name: "category", title: "Kategorie", type: "string", options: { list: projectCategories }, validation: (rule) => rule.required() }),
+      defineField({ name: "image", title: "Titelbild", type: "image", options: { hotspot: true }, fields: [defineField({ name: "alt", title: "Bildbeschreibung", type: "string", validation: (rule) => rule.required() })], validation: (rule) => rule.required() }),
+    ], preview: { select: { title: "category", media: "image" } } })] }),
     defineField({ name: "excerpt", title: "Kurztext", type: "text", rows: 3 }),
     defineField({ name: "description", title: "Beschreibung", type: "text", rows: 6 }),
     defineField({ name: "materials", title: "Materialien", type: "array", of: [defineArrayMember({ type: "string" })] }),

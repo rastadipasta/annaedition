@@ -45,6 +45,7 @@
 }
 
 * { box-sizing: border-box; }
+h1, h2, h3, h4, h5, h6 { -webkit-hyphens: none; hyphens: none; }
 html { scroll-behavior: smooth; background: var(--paper); }
 body {
   margin: 0;
@@ -598,7 +599,8 @@ main { padding-top: 96px; }
 .project-story-sections { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1px; margin-bottom: clamp(5rem, 9vw, 9rem); border: 1px solid var(--line); border-radius: 12px 56px; overflow: hidden; background: var(--line); }
 .project-story-section { grid-column: span 6; min-height: 290px; padding: clamp(1.75rem, 3vw, 3rem); background: var(--paper); }
 .project-story-section:nth-child(3n) { grid-column: span 12; min-height: 230px; }
-.project-story-section h2 { margin: .7rem 0 1rem; font-family: var(--font-tropical), var(--font-display), Georgia, serif; font-size: clamp(2rem, 3.4vw, 3.8rem); font-weight: 400; line-height: 1; }
+/* Tropical Avenue's decorative "ru" ligature obscures the u in Raumstruktur. */
+.project-story-section h2 { margin: .7rem 0 1rem; font-family: var(--font-tropical), var(--font-display), Georgia, serif; font-size: clamp(2rem, 3.4vw, 3.8rem); font-weight: 400; line-height: 1; font-variant-ligatures: none; font-feature-settings: "liga" 0, "dlig" 0; }
 .project-story-section > p:last-child { max-width: 62ch; margin: 0; color: var(--muted); }
 .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding-bottom: 8rem; }
 .gallery figure { position: relative; min-height: 520px; margin: 0; overflow: hidden; border-radius: 12px 42px; }
@@ -881,7 +883,7 @@ main { padding-top: 96px; }
     line-height: 1.05;
   }
   .hero-copy .lede { max-width: 38rem; font-size: clamp(.9rem, 2.2vw, 1rem); line-height: 1.55; }
-  .page-hero h1 { max-width: 100%; font-size: clamp(3rem, 12vw, 4rem); overflow-wrap: break-word; hyphens: auto; }
+  .page-hero h1 { max-width: 100%; font-size: clamp(3rem, 12vw, 4rem); overflow-wrap: normal; }
   .hero-media {
     height: clamp(170px, 24svh, 280px);
     min-height: 0;
