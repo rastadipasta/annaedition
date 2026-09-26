@@ -2,8 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
-
-type Theme = "light" | "dark";
+import { saveTheme, type Theme } from "@/lib/privacy-preferences";
 
 function updateBrowserThemeColor(theme: Theme) {
   document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#40191e" : "#ffffff");
@@ -26,7 +25,7 @@ export function ThemeToggle() {
     const applyTheme = () => {
       document.documentElement.dataset.theme = next;
       updateBrowserThemeColor(next);
-      if (document.cookie.split("; ").some((entry) => entry === "anna_cookie_consent=all")) localStorage.setItem("anna-theme", next);
+      saveTheme(next);
       setTheme(next);
     };
     const transitionDocument = document as Document & { startViewTransition?: (callback: () => void) => unknown };

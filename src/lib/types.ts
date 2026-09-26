@@ -126,7 +126,6 @@ export interface InquiryPayload {
   email: string;
   phone?: string;
   message?: string;
-  consent: boolean;
   website?: string;
   startedAt: number;
   turnstileToken?: string;

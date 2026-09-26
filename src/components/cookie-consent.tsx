@@ -3,23 +3,7 @@
 import { Cookie, Settings2, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-type ConsentChoice = "all" | "necessary";
-
-const consentCookie = "anna_cookie_consent";
-const consentLifetime = 60 * 60 * 24 * 180;
-
-function readConsent(): ConsentChoice | null {
-  const value = document.cookie.split("; ").find((entry) => entry.startsWith(`${consentCookie}=`))?.split("=")[1];
-  return value === "all" || value === "necessary" ? value : null;
-}
-
-function storeConsent(choice: ConsentChoice) {
-  document.cookie = `${consentCookie}=${choice}; Max-Age=${consentLifetime}; Path=/; SameSite=Lax${location.protocol === "https:" ? "; Secure" : ""}`;
-  if (choice === "all") localStorage.setItem("anna-theme", document.documentElement.dataset.theme === "dark" ? "dark" : "light");
-  else localStorage.removeItem("anna-theme");
-  window.dispatchEvent(new CustomEvent("anna:consent-change", { detail: choice }));
-}
+import { readConsent, storeConsent, type ConsentChoice } from "@/lib/privacy-preferences";
 
 export function CookieConsent() {
   const [open, setOpen] = useState(false);
@@ -35,7 +19,11 @@ export function CookieConsent() {
     storeConsent(choice);
     setOpen(false);
     setDetailsOpen(false);
-    if (new URLSearchParams(location.search).has("cookie-settings")) history.replaceState(null, "", location.pathname + location.hash);
+    const url = new URL(location.href);
+    if (url.searchParams.has("cookie-settings")) {
+      url.searchParams.delete("cookie-settings");
+      history.replaceState(null, "", url.pathname + url.search + url.hash);
+    }
   }
 
   if (!open) return null;
@@ -50,10 +38,10 @@ export function CookieConsent() {
         </div>
         <button className="cookie-consent-close" type="button" onClick={() => choose("necessary")} aria-label="Nur notwendige Cookies verwenden und schließen"><X size={18} /></button>
       </div>
-      <p id="cookie-description">Wir verwenden notwendige Speicherungen für den sicheren Betrieb der Website. Mit deiner Einwilligung merken wir uns zusätzlich dein gewähltes Farbschema. Analyse- oder Marketing-Cookies setzen wir nicht ein.</p>
+      <p id="cookie-description">Wir speichern deine Datenschutz-Auswahl. Mit deiner Einwilligung merken wir uns zusätzlich dein Farbschema und zeigen die Startanimation nur einmal pro Sitzung. Analyse- oder Marketing-Cookies setzen wir nicht ein.</p>
       {detailsOpen ? <div className="cookie-consent-details">
-        <p><strong>Notwendig</strong><span>Speichert deine Datenschutz-Auswahl für 180 Tage und ermöglicht grundlegende Sicherheitsfunktionen.</span></p>
-        <p><strong>Komfort</strong><span>Speichert deine Auswahl zwischen hellem und dunklem Farbschema für 180 Tage.</span></p>
+        <p><strong>Notwendig</strong><span>„anna_cookie_consent“ speichert deine Datenschutz-Auswahl als Cookie für 180 Tage.</span></p>
+        <p><strong>Komfort</strong><span>„anna-theme“ speichert dein Farbschema als Cookie bis zum Ablauf deiner Einwilligung, maximal 180 Tage. „anna-site-intro-seen“ merkt sich die Startanimation im Sitzungsspeicher bis zum Ende der Sitzung. Du kannst beides jederzeit über „Cookie-Einstellungen“ widerrufen.</span></p>
       </div> : null}
       <div className="cookie-consent-actions">
         <button className="cookie-accept" type="button" onClick={() => choose("all")}>Alle akzeptieren</button>

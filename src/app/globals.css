@@ -280,6 +280,7 @@ img { max-width: 100%; }
 .cookie-consent {
   position: fixed; left: clamp(1rem, 2.4vw, 2rem); bottom: clamp(1rem, 2.4vw, 2rem); z-index: 150;
   width: min(430px, calc(100vw - 2rem)); padding: 1.35rem; border: 1px solid var(--gold); border-radius: 30px 30px 12px 30px;
+  max-height: calc(100dvh - 2 * clamp(1rem, 2.4vw, 2rem)); overflow-y: auto; overscroll-behavior: contain;
   background: color-mix(in srgb, var(--paper) 96%, var(--sand)); color: var(--ink); box-shadow: 0 24px 80px rgb(35 10 9 / 22%);
   animation: cookie-consent-in 480ms var(--ease) both;
 }
@@ -298,8 +299,7 @@ img { max-width: 100%; }
 .cookie-consent-actions { display: grid; gap: .65rem; }
 .cookie-consent-actions button { min-height: 50px; border: 1px solid var(--wine); border-radius: 999px; cursor: pointer; transition: transform 220ms var(--ease), background-color 220ms ease, color 220ms ease; }
 .cookie-consent-actions button:hover { transform: translateY(-2px); }
-.cookie-accept { background: var(--wine); color: var(--paper); }
-.cookie-necessary { background: transparent; color: var(--ink); }
+.cookie-accept, .cookie-necessary { background: var(--wine); color: var(--paper); }
 .cookie-consent-links { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; color: var(--muted); font-size: .78rem; }
 .cookie-consent-links button { display: inline-flex; align-items: center; gap: .35rem; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
 .cookie-consent-links :is(button, a):hover { color: var(--ink); }

@@ -1,12 +1,15 @@
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
 import { CookieConsent, CookieSettingsButton } from "@/components/cookie-consent";
+import { readConsent, storeConsent } from "@/lib/privacy-preferences";
 
 describe("CookieConsent", () => {
   beforeEach(() => {
     cleanup();
     document.cookie = "anna_cookie_consent=; Max-Age=0; Path=/";
+    document.cookie = "anna-theme=; Max-Age=0; Path=/";
     localStorage.clear();
+    sessionStorage.clear();
     document.documentElement.dataset.theme = "light";
     history.replaceState(null, "", "/");
   });
@@ -17,19 +20,38 @@ describe("CookieConsent", () => {
     fireEvent.click(button);
 
     await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
-    expect(document.cookie).toContain("anna_cookie_consent=necessary");
+    expect(readConsent()?.choice).toBe("necessary");
     expect(localStorage.getItem("anna-theme")).toBeNull();
   });
 
   it("opens requested settings and stores optional theme consent", async () => {
-    document.cookie = "anna_cookie_consent=necessary; Path=/";
-    history.replaceState(null, "", "/?cookie-settings=1");
+    storeConsent("necessary");
+    history.replaceState(null, "", "/kontakt?anfrage=call&cookie-settings=1#form");
     render(<><CookieConsent /><CookieSettingsButton /></>);
     fireEvent.click(await screen.findByRole("button", { name: "Alle akzeptieren" }));
 
-    expect(document.cookie).toContain("anna_cookie_consent=all");
-    expect(localStorage.getItem("anna-theme")).toBe("light");
-    expect(location.search).toBe("");
+    expect(readConsent()?.choice).toBe("all");
+    expect(document.cookie).toContain("anna-theme=light");
+    expect(localStorage.getItem("anna-theme")).toBeNull();
+    expect(location.search).toBe("?anfrage=call");
+    expect(location.hash).toBe("#form");
     expect(screen.getByRole("link", { name: "Cookie-Einstellungen" })).toHaveAttribute("href", "?cookie-settings=1");
+  });
+
+  it("withdraws both optional preferences through the reopened banner", async () => {
+    storeConsent("all");
+    sessionStorage.setItem("anna-site-intro-seen", "true");
+    history.replaceState(null, "", "/?cookie-settings=1");
+    render(<CookieConsent />);
+    fireEvent.click(await screen.findByRole("button", { name: "Nur notwendige" }));
+    expect(readConsent()?.choice).toBe("necessary");
+    expect(document.cookie).not.toContain("anna-theme=");
+    expect(sessionStorage.getItem("anna-site-intro-seen")).toBeNull();
+  });
+
+  it("asks again when the saved consent predates the optional intro purpose", async () => {
+    document.cookie = "anna_cookie_consent=all; Path=/";
+    render(<CookieConsent />);
+    expect(await screen.findByRole("dialog")).toBeInTheDocument();
   });
 });

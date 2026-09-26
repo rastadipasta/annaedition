@@ -2,6 +2,7 @@
 
 import { upload } from "@vercel/blob/client";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { TurnstileField } from "@/components/turnstile-field";
@@ -65,18 +66,19 @@ export function InquiryForm() {
     try {
       const attachmentUrls: string[] = [];
       for (const file of files) {
-        const blob = await upload(`inquiries/${crypto.randomUUID()}-${file.name}`, file, { access: "public", handleUploadUrl: "/api/upload" });
+        const extension = file.type === "application/pdf" ? "pdf" : file.type === "image/png" ? "png" : "jpg";
+        const blob = await upload(`inquiries/${crypto.randomUUID()}.${extension}`, file, { access: "public", handleUploadUrl: "/api/upload" });
         attachmentUrls.push(blob.url);
       }
       const { name = "", email = "", phone = "", message = "", website = "", ...details } = values;
-      const payload: InquiryPayload = { type, name: String(name), email: String(email), phone: String(phone), message: String(message), website: String(website), consent: values.consent === "yes", startedAt, turnstileToken, attachmentUrls, details };
+      const payload: InquiryPayload = { type, name: String(name), email: String(email), phone: String(phone), message: String(message), website: String(website), startedAt, turnstileToken, attachmentUrls, details };
       const response = await fetch("/api/inquiries", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       const result = await response.json(); if (!response.ok) throw new Error(result.error || "Die Anfrage konnte nicht gesendet werden.");
       setStatus("success");
     } catch (caught) { setError(caught instanceof Error ? caught.message : "Die Anfrage konnte nicht gesendet werden."); setStatus("error"); }
   }
 
-  const uploadField = <div className="field full"><label htmlFor="files">Grundrisse, Moodboards oder Inspirationen · JPG, PNG oder PDF · max. 25 MB</label><input id="files" type="file" multiple accept=".jpg,.jpeg,.png,.pdf" onChange={(event) => handleFiles(event.target.files)} /><small>{files.length ? `${files.length} Datei(en) ausgewählt` : "Optional, maximal fünf Dateien"}</small></div>;
+  const uploadField = <div className="field full"><label htmlFor="files">Grundrisse, Moodboards oder Inspirationen · JPG, PNG oder PDF · max. 25 MB</label><input id="files" type="file" multiple accept=".jpg,.jpeg,.png,.pdf" aria-describedby="upload-privacy" onChange={(event) => handleFiles(event.target.files)} /><small>{files.length ? `${files.length} Datei(en) ausgewählt` : "Optional, maximal fünf Dateien"}</small><small id="upload-privacy">Dateien sind über einen zufälligen Link ohne Anmeldung abrufbar. Bitte entferne Namen, Adressen und andere vertrauliche Angaben aus deinen Unterlagen. Für vertrauliche Dokumente vereinbaren wir einen geschützten Übertragungsweg. <Link href="/datenschutz">Hinweise zum Datenschutz</Link></small></div>;
 
   function privateStep() {
     if (step === 0) return <div className="form-grid"><ChoiceGroup name="area" label="Um welchen Bereich handelt es sich?" options={["Wohnzimmer", "Schlafzimmer", "Küche", "Badezimmer", "Home Office", "Gesamte Wohnung / Haus", "Neubau", "Anderer Bereich"]} value={values.area} onChange={update} /><SelectField name="size" label="Größe des Projekts" options={["Unter 20 m²", "20–50 m²", "50–100 m²", "Über 100 m²"]} value={values.size as string} onChange={update} /><SelectField name="stage" label="Projektphase" options={["Erste Ideenphase", "Planung läuft bereits", "Renovierung / Umbau geplant"]} value={values.stage as string} onChange={update} /></div>;
@@ -111,7 +113,7 @@ export function InquiryForm() {
         <div className="form-progress"><span>{String(step + 1).padStart(2, "0")}</span><div className="form-progress-line"><span style={{ width: progress }} /></div><span>{steps[step]}</span></div>
         <input className="honeypot" type="text" name="website" tabIndex={-1} autoComplete="off" value={(values.website as string) || ""} onChange={(event) => update("website", event.target.value)} aria-hidden="true" />
         {type === "private" ? privateStep() : type === "business" ? businessStep() : callStep()}
-        {isLast ? <div className="field full" style={{ marginTop: "2rem" }}><label style={{ display: "flex", gap: ".7rem", alignItems: "flex-start" }}><input style={{ width: 20, minHeight: 20 }} type="checkbox" required checked={values.consent === "yes"} onChange={(event) => update("consent", event.target.checked ? "yes" : "")} /><span>Ich stimme zu, dass meine Angaben zur Beantwortung meiner Anfrage verarbeitet werden. *</span></label><TurnstileField onToken={setTurnstileToken} /></div> : null}
+        {isLast ? <div className="field full" style={{ marginTop: "2rem" }}><p>Wir verarbeiten deine Angaben zur Bearbeitung deiner Anfrage und zur Vorbereitung eines möglichen Vertrags. Informationen zu Rechtsgrundlagen, Speicherdauer und deinen Rechten findest du in unserer <Link href="/datenschutz">Datenschutzerklärung</Link>.</p><TurnstileField onToken={setTurnstileToken} /></div> : null}
         {error ? <p className="form-error" role="alert">{error}</p> : null}
         <div className="form-actions">{step > 0 ? <button className="button-link" type="button" onClick={() => setStep((value) => value - 1)}><ArrowLeft size={16} /> Zurück</button> : <span />}{isLast ? <button className="button-solid" type="submit" disabled={status === "sending"}>{status === "sending" ? "Wird gesendet …" : "Anfrage senden"} <ArrowRight size={16} /></button> : <button className="button-solid" type="button" onClick={() => setStep((value) => value + 1)}>Weiter <ArrowRight size={16} /></button>}</div>
       </form>

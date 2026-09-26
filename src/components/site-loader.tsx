@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { rememberIntro } from "@/lib/privacy-preferences";
 
 const loaderDuration = 2200;
 const loaderExitDuration = 1200;
@@ -24,11 +25,8 @@ export function SiteLoader() {
       setPhase("exit");
     }, loaderDuration);
     const doneTimer = window.setTimeout(() => {
-      try {
-        window.sessionStorage.setItem("anna-site-intro-seen", "true");
-      } catch {
-        // The intro still finishes when browser storage is unavailable.
-      }
+      (window as Window & { __annaIntroSeen?: boolean }).__annaIntroSeen = true;
+      rememberIntro();
       root.classList.remove("site-intro-enabled", "site-intro-skip");
       document.body.style.overflow = previousOverflow;
       setPhase("done");

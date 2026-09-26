@@ -25,7 +25,7 @@ export function SiteFooter() {
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} ANNA ÉDITION. Alle Rechte vorbehalten.</span>
           <a href="mailto:studio@annaedition.de">studio@annaedition.de</a>
-          <a href="https://timdsgn.com/" rel="noreferrer" target="_blank">Website TIMDSGN</a>
+          <a href="https://timdsgn.com/" rel="noreferrer" target="_blank">Powered by TIMDSGN</a>
         </div>
       </div>
     </footer>

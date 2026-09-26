@@ -6,7 +6,6 @@ export const inquirySchema = z.object({
   email: z.string().trim().email().max(160),
   phone: z.string().trim().max(60).optional().default(""),
   message: z.string().trim().max(3000).optional().default(""),
-  consent: z.literal(true),
   website: z.string().max(0).optional().default(""),
   startedAt: z.number().int().positive(),
   turnstileToken: z.string().optional(),
