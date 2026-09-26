@@ -11,7 +11,9 @@ import type { Project, ProjectCategory } from "@/lib/types";
 export function ProjectFilter({ projects }: { projects: Project[] }) {
   const [selected, setSelected] = useState<ProjectCategory>("Alle Projekte");
   const deferredSelected = useDeferredValue(selected);
-  const visible = deferredSelected === "Alle Projekte" ? projects : projects.filter((project) => getProjectCategories(project).includes(deferredSelected));
+  const visible = projects.filter((project) => deferredSelected === "Alle Projekte"
+    ? project.showInAllProjects !== false
+    : getProjectCategories(project).includes(deferredSelected));
 
   useEffect(() => {
     window.dispatchEvent(new Event("anna:motion-refresh"));

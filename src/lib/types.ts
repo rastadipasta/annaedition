@@ -27,6 +27,7 @@ export interface Project {
   year: number;
   category: ProjectTag;
   categories?: ProjectTag[];
+  showInAllProjects?: boolean;
   categoryCovers?: { category: ProjectTag; image: ProjectImage }[];
   excerpt: string;
   description: string;

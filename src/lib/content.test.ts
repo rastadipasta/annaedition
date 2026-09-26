@@ -54,4 +54,13 @@ describe("project content", () => {
     expect(fallbackProjects.filter((project) => project.featured).map((project) => project.slug)).toEqual(["concrete-calm"]);
     expect(categories).toContain("Gesamtkonzepte");
   });
+
+  it("limits only the four requested rooms to their categories and corrects the Berlin labels", () => {
+    expect(fallbackProjects.filter((project) => project.showInAllProjects === false).map((project) => project.slug)).toEqual([
+      "koeln-2026", "essen-2026", "krefeld-2026", "muelheim-an-der-ruhr-2026",
+    ]);
+    for (const [slug, category] of [["koeln-2026", "Küchen"], ["muelheim-an-der-ruhr-2026", "Eingangsbereiche"]]) {
+      expect(fallbackProjects.find((project) => project.slug === slug)).toMatchObject({ title: "Berlin 2026", location: "Berlin", categories: [category] });
+    }
+  });
 });

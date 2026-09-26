@@ -80,6 +80,7 @@ for (const project of fallbackProjects) {
     year: project.year,
     category: project.category,
     categories: project.categories || [project.category],
+    showInAllProjects: project.showInAllProjects !== false,
     categoryCovers,
     excerpt: project.excerpt,
     description: project.description,

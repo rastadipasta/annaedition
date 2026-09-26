@@ -73,6 +73,7 @@ const project = defineType({
     defineField({ name: "location", title: "Ort", type: "string" }),
     defineField({ name: "year", title: "Jahr", type: "number" }),
     defineField({ name: "category", title: "Hauptkategorie", type: "string", options: { list: projectCategories } }),
+    defineField({ name: "showInAllProjects", title: "In „Alle Projekte“ anzeigen", description: "Deaktivieren, um einen einzelnen Raum nur in seinen Kategorien zu zeigen. Ohne Einstellung bleibt das Projekt in Alle Projekte sichtbar.", type: "boolean", initialValue: true }),
     defineField({ name: "categories", title: "Kategorien (Tags)", description: "Ein Projekt kann in mehreren Filtern erscheinen. Unter Alle Projekte erscheint es einmal.", type: "array", of: [defineArrayMember({ type: "string" })], options: { list: projectCategories }, validation: (rule) => rule.unique() }),
     defineField({ name: "categoryCovers", title: "Titelbilder je Kategorie", description: "Ohne eigenes Kategoriebild wird das Hauptbild verwendet.", type: "array", of: [defineArrayMember({ name: "categoryCover", type: "object", fields: [
       defineField({ name: "category", title: "Kategorie", type: "string", options: { list: projectCategories }, validation: (rule) => rule.required() }),
