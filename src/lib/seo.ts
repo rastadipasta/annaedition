@@ -1,6 +1,6 @@
 import type { DesignPackage, FaqItem, Project } from "@/lib/types";
 
-export const PRODUCTION_SITE_URL = "https://annaedition.vercel.app";
+export const PRODUCTION_SITE_URL = "https://www.annaedition.de";
 export const LOCAL_SITE_URL = "http://localhost:3000";
 
 type DeploymentEnvironment = {
@@ -35,6 +35,7 @@ export function resolveSiteUrl(environment: DeploymentEnvironment): string {
 
   if (configured) {
     const host = new URL(configured).hostname;
+    if (deployed && ["annaedition.vercel.app", "annaedition.de", "www.annaedition.de"].includes(host)) return PRODUCTION_SITE_URL;
     if (!deployed || !localHosts.has(host)) return configured;
   }
 

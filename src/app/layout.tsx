@@ -29,13 +29,13 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: "Interior Design am Niederrhein & online | ANNA ÉDITION",
     description: "Curated. Timeless. Unique. Interior Design für Räume mit Persönlichkeit.",
-    images: [{ url: absoluteUrl("/images/moodboard.jpg"), alt: "ANNA ÉDITION Interior Design" }],
+    images: [{ url: absoluteUrl("/brand/share-logo.png"), width: 1200, height: 630, type: "image/png", alt: "ANNA ÉDITION – Logo" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Interior Design am Niederrhein & online | ANNA ÉDITION",
     description: "Curated. Timeless. Unique. Interior Design für Räume mit Persönlichkeit.",
-    images: [absoluteUrl("/images/moodboard.jpg")],
+    images: [absoluteUrl("/brand/share-logo.png")],
   },
 };
 
