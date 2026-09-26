@@ -12,7 +12,7 @@ Premium Next.js website for the ANNA ÉDITION interior design studio.
 2. Install dependencies with `npm install`.
 3. Run `npm run dev` and open `http://localhost:3000`.
 
-Without environment variables, public content uses the local portfolio fallback and inquiry submission returns a safe demo success in development. File upload is enabled only when `BLOB_READ_WRITE_TOKEN` exists.
+Without environment variables, public content uses the local portfolio fallback and inquiry submission returns a safe demo success in development. File upload requires `BLOB_READ_WRITE_TOKEN` or the connected store's custom `BOLB_READ_WRITE_TOKEN`. Upload and cleanup prefer the standard name when both have non-empty values.
 
 ## CMS
 

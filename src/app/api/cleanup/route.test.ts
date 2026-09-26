@@ -10,6 +10,7 @@ describe("upload cleanup", () => {
     vi.clearAllMocks();
     vi.stubEnv("CRON_SECRET", "test-cleanup-secret");
     vi.stubEnv("BLOB_READ_WRITE_TOKEN", "test-blob-token");
+    vi.stubEnv("BOLB_READ_WRITE_TOKEN", "");
   });
   afterEach(() => { vi.unstubAllEnvs(); vi.restoreAllMocks(); });
   const request = (token = "test-cleanup-secret") => new Request("https://example.com/api/cleanup", { headers: { authorization: `Bearer ${token}` } });
@@ -27,7 +28,9 @@ describe("upload cleanup", () => {
     expect((await GET(request())).status).toBe(503);
   });
 
-  it("deletes only expired inquiry files across all result pages", async () => {
+  it.each(["BLOB_READ_WRITE_TOKEN", "BOLB_READ_WRITE_TOKEN"])("deletes only expired inquiry files across all result pages using %s", async (variable) => {
+    vi.stubEnv("BLOB_READ_WRITE_TOKEN", "");
+    vi.stubEnv(variable, "test-blob-token");
     const now = Date.now();
     vi.spyOn(Date, "now").mockReturnValue(now);
     const cutoff = now - 30 * 24 * 60 * 60 * 1000;
@@ -36,8 +39,8 @@ describe("upload cleanup", () => {
     vi.mocked(list).mockResolvedValueOnce({ blobs: [blob("https://example.com/older", cutoff - 1)], hasMore: false });
     const response = await GET(request());
     expect(await response.json()).toEqual({ deleted: 2 });
-    expect(list).toHaveBeenNthCalledWith(2, { prefix: "inquiries/", cursor: "next", limit: 100 });
-    expect(del).toHaveBeenNthCalledWith(1, ["https://example.com/expired"]);
-    expect(del).toHaveBeenNthCalledWith(2, ["https://example.com/older"]);
+    expect(list).toHaveBeenNthCalledWith(2, { prefix: "inquiries/", cursor: "next", limit: 100, token: "test-blob-token" });
+    expect(del).toHaveBeenNthCalledWith(1, ["https://example.com/expired"], { token: "test-blob-token" });
+    expect(del).toHaveBeenNthCalledWith(2, ["https://example.com/older"], { token: "test-blob-token" });
   });
 });

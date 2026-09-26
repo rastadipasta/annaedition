@@ -1,10 +1,13 @@
 import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
+import { getBlobToken } from "@/lib/blob-token";
 
 export async function POST(request: Request) {
-  if (!process.env.BLOB_READ_WRITE_TOKEN) return Response.json({ error: "Dateiupload ist lokal nicht konfiguriert." }, { status: 503 });
+  const token = getBlobToken();
+  if (!token) return Response.json({ error: "Dateiupload ist lokal nicht konfiguriert." }, { status: 503 });
   try {
     const body = await request.json() as HandleUploadBody;
     const response = await handleUpload({
+      token,
       body,
       request,
       onBeforeGenerateToken: async (pathname) => {
