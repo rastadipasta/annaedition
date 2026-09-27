@@ -701,8 +701,6 @@ main { padding-top: 96px; }
 .motion-enabled .about-visual[data-motion-variant="image"] { position: sticky; top: 130px; }
 .about-portrait { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 56px 12px; border: 1px solid var(--line); background: var(--sand); }
 .about-portrait img { object-fit: cover; filter: saturate(.78); }
-.about-portrait img.about-portrait-image,
-.image-frame img.about-portrait-image { object-fit: contain; background: #181818; }
 .about-portrait-image { transform: scaleX(-1); }
 .about-page-portrait-image { transform: none; }
 .about-copy h1 { max-width: 7ch; font-size: clamp(3.8rem, 6.6vw, 6.75rem); margin: 1rem 0 3rem; }
