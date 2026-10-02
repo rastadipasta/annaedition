@@ -11,7 +11,7 @@ export default async function ProjectsPage() {
       <header className="page-hero">
         <p className="eyebrow" data-motion="load">{page?.eyebrow || "Projekte"}</p>
         <h1 className="display" data-motion="load" data-motion-order="1">{page?.title || "Ideen, die"} <span className="accent">{page?.accentTitle || "Form annehmen."}</span></h1>
-        <p className="lede" data-motion="load" data-motion-order="2">{page?.intro || "Jedes Zuhause erzählt eine eigene Geschichte. Entdecke ausgewählte Kundenprojekte und realistische 3D-Visualisierungen. Vom ersten Gedanken bis zum zeitlosen Raum."}</p>
+        <p className="lede" data-motion="load" data-motion-order="2">{page?.intro || "Jedes Zuhause erzählt eine eigene Geschichte. Entdecke ausgewählte Konzepte und realistische 3D-Visualisierungen. Vom ersten Gedanken bis zum zeitlosen Raum."}</p>
       </header>
       <ProjectFilter projects={projects} />
     </section>

@@ -536,7 +536,7 @@ export const packages = [
 export const services = [
   {
     title: "Accessoire-Einkauf (Full-Service)",
-    text: "Wir übernehmen die gesamte Auswahl und Bestellung dekorativer Details wie Vasen, Bücher oder Kissen.",
+    text: "Ich übernehme die gesamte Auswahl und Bestellung dekorativer Details wie Vasen, Bücher oder Kissen.",
     price: "Artikelpreis + 20% Servicepauschale",
   },
   {
@@ -551,12 +551,12 @@ export const services = [
   },
   {
     title: "Shopping-Service & Produktbestellung",
-    text: "Wir übernehmen die komplette Abwicklung deiner Bestellungen – von der Recherche bis zur Bestellung inklusive Rücksprachen mit Lieferanten.",
+    text: "Ich übernehme die komplette Abwicklung deiner Bestellungen – von der Recherche bis zur Bestellung inklusive Rücksprachen mit Lieferanten.",
     price: "Artikelpreis + 20% Servicepauschale",
   },
   {
     title: "Projektkoordination & Handwerkersteuerung",
-    text: "Organisation und Kommunikation mit allen Gewerken. Bauleitung light für einen reibungslosen Ablauf vor Ort.",
+    text: "Ich koordiniere Termine und Absprachen mit deinen Handwerkern, für einen reibungslosen Ablauf vor Ort.",
     price: "245 €/Stunde",
   },
   {
@@ -568,7 +568,7 @@ export const services = [
 
 export const serviceFaqs: FaqItem[] = [
   {
-    question: "Bietet ihr auch technische Zeichnungen an?",
+    question: "Bietest du auch technische Zeichnungen an?",
     answer: "Aktuell nicht. Ich arbeite noch ohne festen Architekten und möchte diese Verantwortung nicht ohne Fachpartner übernehmen. Sobald ich mit einem Architekten zusammenarbeite, wird das Teil des Angebots.",
   },
   {

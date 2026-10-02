@@ -25,7 +25,7 @@ export default async function HomePage() {
               <span className="typewriter-line typewriter-line-3 accent" aria-hidden="true">{heroLines[2]}</span><br />
               <span className="typewriter-line typewriter-line-4 accent" aria-hidden="true">{heroLines[3]}</span>
             </h1>
-            <p className="lede" data-motion="load" data-motion-order="2">{cms?.heroIntro || "Wir gestalten durchdachte, funktionale Räume, die deine Persönlichkeit widerspiegeln und die Zeit überdauern."}</p>
+            <p className="lede" data-motion="load" data-motion-order="2">{cms?.heroIntro || "Ich gestalte durchdachte, funktionale Räume, die deine Persönlichkeit widerspiegeln und die Zeit überdauern."}</p>
             <div className="hero-actions" data-motion="load" data-motion-order="3">
               <Link className="button-link hero-cta-button hero-projects-button" href="/projekte">Projekte entdecken <ArrowRight size={16} /></Link>
               <Link className="button-link hero-cta-button hero-contact-button" href="/kontakt">Kontakt <ArrowRight size={16} /></Link>
@@ -40,7 +40,7 @@ export default async function HomePage() {
       <section className="section wine-section">
         <div className="container philosophy-grid">
           <div className="philosophy-card" data-motion="reveal">
-            <p className="eyebrow">{cms?.philosophyEyebrow || "Unsere Philosophie"}</p>
+            <p className="eyebrow">{cms?.philosophyEyebrow || "Meine Philosophie"}</p>
             <h2 className="display motion-title">{cms?.philosophyTitle || "Zeitlose Räume."} <span className="accent">{cms?.philosophyAccent || "Persönlich gestaltet."}</span></h2>
             <p>{cms?.philosophyText || "Ein Zuhause, das wirklich zu dir passt, entsteht nicht durch Zufall – es basiert auf einem klaren Plan. Jedes Detail wird sorgsam ausgewählt, damit Altes und Neues selbstverständlich zusammenfinden."}</p>
             <Link className="button-link" href="/leistungen">Wie wir zusammenarbeiten <ArrowRight size={16} /></Link>
