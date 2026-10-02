@@ -35,7 +35,20 @@ describe("CookieConsent", () => {
     expect(localStorage.getItem("anna-theme")).toBeNull();
     expect(location.search).toBe("?anfrage=call");
     expect(location.hash).toBe("#form");
-    expect(screen.getByRole("link", { name: "Cookie-Einstellungen" })).toHaveAttribute("href", "?cookie-settings=1");
+    expect(screen.getByRole("button", { name: "Cookie-Einstellungen" })).not.toHaveAttribute("href");
+  });
+
+  it("reopens settings without changing the current URL", async () => {
+    history.replaceState(null, "", "/kontakt?anfrage=call#form");
+    render(<><CookieConsent /><CookieSettingsButton /></>);
+    fireEvent.click(await screen.findByRole("button", { name: "Alle akzeptieren" }));
+    await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+
+    fireEvent.click(screen.getByRole("button", { name: "Cookie-Einstellungen" }));
+    expect(await screen.findByRole("dialog")).toBeInTheDocument();
+    expect(location.pathname + location.search + location.hash).toBe("/kontakt?anfrage=call#form");
+    fireEvent.click(screen.getByRole("button", { name: "Nur notwendige" }));
+    expect(readConsent()?.choice).toBe("necessary");
   });
 
   it("withdraws both optional preferences through the reopened banner", async () => {

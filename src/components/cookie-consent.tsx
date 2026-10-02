@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { readConsent, storeConsent, type ConsentChoice } from "@/lib/privacy-preferences";
 
+const openSettingsEvent = "anna-open-cookie-settings";
+
 export function CookieConsent() {
   const [open, setOpen] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
@@ -12,7 +14,16 @@ export function CookieConsent() {
   useEffect(() => {
     const settingsRequested = new URLSearchParams(location.search).has("cookie-settings");
     const frame = requestAnimationFrame(() => setOpen(settingsRequested || !readConsent()));
-    return () => cancelAnimationFrame(frame);
+    function openSettings() {
+      cancelAnimationFrame(frame);
+      setDetailsOpen(false);
+      setOpen(true);
+    }
+    window.addEventListener(openSettingsEvent, openSettings);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener(openSettingsEvent, openSettings);
+    };
   }, []);
 
   function choose(choice: ConsentChoice) {
@@ -56,5 +67,5 @@ export function CookieConsent() {
 }
 
 export function CookieSettingsButton() {
-  return <a className="footer-cookie-link" href="?cookie-settings=1">Cookie-Einstellungen</a>;
+  return <button className="footer-cookie-link" type="button" onClick={() => window.dispatchEvent(new Event(openSettingsEvent))}>Cookie-Einstellungen</button>;
 }
