@@ -101,7 +101,19 @@ export function professionalServiceSchema(): Record<string, unknown> {
       "@type": "Place",
       name,
     })),
-    serviceType: ["Interior Design", "Online Einrichtungsberatung", "3D-Visualisierung"],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Interior Design Leistungen",
+      itemListElement: ["Interior Design", "Online Einrichtungsberatung", "3D-Visualisierung"].map((name) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name,
+          serviceType: name,
+          provider: { "@id": seoIds.organization },
+        },
+      })),
+    },
     founder: { "@id": seoIds.person },
     sameAs: socialProfiles,
     priceRange: "€€",
